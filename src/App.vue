@@ -1,33 +1,38 @@
 <template>
   <div>
     <div class="row">
-      <header>Roundupper</header>
+      <rupper-header>Roundupper</rupper-header>
       <div class="col-xs-offset-4 col-xs-4">
         <select-template v-on:template-selected="handleTemplateSelect"></select-template>
       </div>
     </div>
 
-{{ currentTemplate }}
-    <div class="row" id="workspace">
-      <workspace v-bind:workingTemplate="currentTemplate"></workspace>
+    <div class="row">
+      <transition name="fade">
+        <component v-bind:is="currentTemplate"></component>
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
 
-  import header from './components/header.vue'
+  import rupperHeader from './components/header.vue'
   import workspace from './components/workspace.vue'
   import selectTemplate from './components/select-template.vue'
+  import jaoaArticle from './components/jaoa/article.vue'
+  import jaoaBanner from './components/jaoa/banner.vue'
 
   export default {
 
     name: 'app',
 
     components: {
-      header,
+      'rupper-header': rupperHeader,
       'select-template': selectTemplate,
       'workspace': workspace,
+      'jaoa-article': jaoaArticle,
+      'jaoa-banner': jaoaBanner,
     },
 
     methods: {
@@ -49,4 +54,81 @@
 </script>
 
 <style lang="scss">
+#rendered {
+    text-align: center;
+}
+
+#highlight {
+    display: inline-block;
+    padding-top: 1em;
+    padding-right: 2em;
+    padding-bottom: 1em;
+    padding-left: 2em;
+}
+
+.page-heading {
+
+    margin-top: 1em;
+    margin-bottom: 0;
+    padding-bottom: 1em;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: 200;
+    color: gray;
+    line-height: 1;
+    
+    &:after {
+        content: "";
+        position: absolute;
+        left: -8.4375em;
+        width: 14.3em;
+        height: 1px;
+        display: block;
+        margin-top: .5em;
+        margin-left: 0;
+        
+        background: firebrick;
+    }
+
+}
+
+.btn:focus {
+    outline: none;
+}
+
+label {
+    font-weight: 400;
+    color: gray;
+}
+
+hr {
+    /*border-top: 1px dashed #929292;*/
+    border-top: 1px dashed #ccc;
+}
+
+.checkbox-inline > label:last-child {
+    margin-left: 2em;
+}
+
+.image-group {
+  background: aliceblue;
+  margin-bottom: 1.25rem;
+  margin-top: 1.75rem;
+  padding: 1.25rem;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s ease;
+}
+
+.fade-enter, 
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

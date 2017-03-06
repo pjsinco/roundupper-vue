@@ -1,14 +1,5 @@
 <template>
 
-  <div id="workspace">
-    <div id="form" class="col-lg-6 col-md-12">
-      <template-form v-on:update="handleUpdate" v-bind:workingTemplate="workingTemplate" v-bind:working-model="this[workingTemplate]"></template-form>
-    </div>
-    <div id="rendered" class="col-lg-6 col-md-12">
-      <template-render v-bind:workingTemplate="workingTemplate" v-bind:working-model="this[workingTemplate]"></template-render>
-    </div>
-    <div id="clone" style="position: absolute; top: -5000px; left: -5000px"></div>
-  </div>
 
 </template>
 
