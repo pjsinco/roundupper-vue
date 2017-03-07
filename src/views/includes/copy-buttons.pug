@@ -1,0 +1,12 @@
+div.form-group.clearfix
+  button.btn.btn-default#refresh
+    span.glyphicon.glyphicon-refresh
+    | &nbsp;Reset
+  div.btn-group.pull-right
+    button.btn.btn-primary#copyHtml(v-on:click="copyHtml" v-on:mouseleave="onMouseLeave" aria-label="Copied HTML!")
+      span.glyphicon.glyphicon-copy
+      | &nbsp;Copy HTML
+    button.btn.btn-info#copyTextVersion(data-component="jaoa-article" v-on:click="copyTextVersion" v-on:mouseleave="onMouseLeave" aria-label="Copied Text!")
+      span.glyphicon.glyphicon-copy
+      | &nbsp;Copy text
+
