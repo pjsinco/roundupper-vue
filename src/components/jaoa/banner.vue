@@ -20,8 +20,6 @@
 
     mixins: [mixins],
 
-    props: [ 'currentTemplate' ],
-
     methods: {
 
     },

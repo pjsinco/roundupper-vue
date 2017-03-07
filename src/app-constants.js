@@ -4,6 +4,25 @@ module.exports = {
 
   jaoa: {
 
+    articleTypes: [
+      {
+        name: "Standalone",
+        value: '',
+      },
+      {
+        name: "Series: First",
+        value: 'series-first',
+      },
+      {
+        name: "Series: Middle",
+        value: 'series-middle',
+      },
+      {
+        name: "Series: Last",
+        value: 'series-last',
+      },
+    ],
+
     categories: [
       "Book Reviews",
       "Brief Report",

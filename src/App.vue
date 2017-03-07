@@ -46,7 +46,6 @@
 
     data () {
       return {
-        
         currentTemplate: 'jaoa-article',
       }
     }
@@ -143,5 +142,23 @@
   .help-block {
     font-size: 90%;
     color: rgba(115, 115, 115, 0.57);
+  }
+
+  .btn-default.focus,
+  .btn-default:focus {
+    background-color: #fff;
+    border-color: #adadad;
+  }
+
+  .btn-primary.focus,
+  .btn-primary:focus {
+    background-color: #337ab7;
+    border-color: #204d74;
+  }
+
+  .btn-info.focus,
+  .btn-info:focus {
+    background-color: #31b0d5;
+    border-color: #269abc;
   }
 </style>

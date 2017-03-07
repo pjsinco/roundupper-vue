@@ -2,7 +2,26 @@ import Clipboard from './../node_modules/clipboard/dist/clipboard.min.js'
 
 export default {
 
+  mounted: function() {
+    this.addSelectOnFocus()
+  },
+
+  props: [ 'currentTemplate' ],
+
   methods: {
+
+      addSelectOnFocus: function() {
+        document.querySelectorAll('input[type=text]')
+          .forEach(function(input) { 
+            input.addEventListener('focus', function() { 
+              this.select(); 
+            })
+          })
+      },
+
+      reset: function() {
+        Object.assign(this.$data, this.$options.data())
+      },
 
       onMouseLeave: function() {
 console.log('mouseleave');
