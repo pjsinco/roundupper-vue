@@ -1,12 +1,11 @@
 <template lang="pug">
 
   div#workspace
-    hr
 
-    include ./../../views/jaoa/forms/article
+    div#form.col-lg-6.col-md-12
+      include ./../../views/jaoa/forms/article
 
     div#rendered.col-lg-6.col-md-12
-
       include ./../../views/jaoa/renders/article
 
     div#clone(style="position: absolute; top: -5000px; left: -5000px")
@@ -20,6 +19,10 @@
   export default {
 
     methods: {
+
+    },
+
+    mounted: function() {
 
     },
 

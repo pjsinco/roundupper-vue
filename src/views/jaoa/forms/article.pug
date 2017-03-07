@@ -1,4 +1,4 @@
-div(id="form" class="col-lg-6 col-md-12")
+div
   div(class="form-group")
     label(for="category") Category
     select(class="form-control" id="category" v-model="category")
@@ -10,7 +10,7 @@ div(id="form" class="col-lg-6 col-md-12")
       div.form-group
         label(for="imageSrc") Image URL
         input(type="text" id="imageSrc" class="form-control" v-model="imageSrc")
-        p.help-block Image size: 480x240px
+        p.help-block Image size: 480px x 240px
 
       div.form-group
         label(for="imageUrl") Image Link

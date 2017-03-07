@@ -8,7 +8,8 @@
     </div>
 
     <div class="row">
-      <transition name="fade">
+      <hr>
+      <transition name="fade" appear mode="out-in">
         <component v-bind:is="currentTemplate"></component>
       </transition>
     </div>
@@ -54,6 +55,7 @@
 </script>
 
 <style lang="scss">
+
 #rendered {
     text-align: center;
 }
@@ -130,5 +132,14 @@ hr {
 .fade-enter, 
 .fade-leave-to {
   opacity: 0;
+}
+
+/**
+ * Bootstrap overrides
+ *
+ */
+.help-block {
+  font-size: 90%;
+  color: rgba(115, 115, 115, 0.57);
 }
 </style>
