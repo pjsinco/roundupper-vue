@@ -15,60 +15,20 @@
 <script>
 
   import { jaoa } from './../../app-constants'
-  import Clipboard from './../../../node_modules/clipboard/dist/clipboard.min.js'
+  import mixins from './../../mixins'
 
   export default {
 
+    mixins: [mixins],
+
     methods: {
-      onMouseLeave: function() {
-console.log('mouseleave');
-        //$('#copyHtml').removeClass('tooltipped tooltipped-w');
-      },
-
-      collapseSelection: function(elementId) {
-
-        const elem = document.getElementById(elementId)
-
-        if (window.getSelection()) {
-            window.getSelection().collapse(elem, 0)
-        }
-      },
-
-      cloneRenderedVersion: function() {
-        const htmlVersion = document.getElementById('rendered')
-        document.getElementById('clone').innerText = htmlVersion.innerHTML
-      },
-
-      copyHtml: function() {
-
-        this.collapseSelection('clone');
-        this.cloneRenderedVersion();
-
-        const clipboard = new Clipboard('#copyHtml', {
-          target: function(trigger) {
-            return document.getElementById('clone');
-          }
-        });
-
-        clipboard.on('success', function(evt) {
-          console.log('Copied!');
-//          $('#highlight').addClass('animated jello');
-//          $('#highlight').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-//            $(this).removeClass('animated jello');
-//          });
-//          $('#copyHtml').addClass('tooltipped tooltipped-w');
-          clipboard.destroy();
-        });
-      },
-
-      copyTextVersion: function() {
-
-      },
     },
 
     mounted: function() {
 
     },
+
+    props: [ 'currentTemplate' ],
 
     data: function() {
       
@@ -91,6 +51,7 @@ console.log('mouseleave');
 </script>
 
 <style lang="scss">
+
 
 </style>
 
