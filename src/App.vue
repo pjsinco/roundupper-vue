@@ -23,6 +23,7 @@
   import selectTemplate from './components/select-template.vue'
   import jaoaArticle from './components/jaoa/article.vue'
   import jaoaBanner from './components/jaoa/banner.vue'
+  import jaoaIntro from './components/jaoa/intro.vue'
 
   export default {
 
@@ -34,6 +35,7 @@
       'workspace': workspace,
       'jaoa-article': jaoaArticle,
       'jaoa-banner': jaoaBanner,
+      'jaoa-intro': jaoaIntro,
     },
 
     methods: {

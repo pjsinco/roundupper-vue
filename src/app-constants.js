@@ -4,6 +4,13 @@ module.exports = {
 
   jaoa: {
 
+    colors: [
+      'Green',
+      'Red',
+      'Purple',
+      'Blue',
+    ],
+
     articleTypes: [
       {
         name: "Standalone",

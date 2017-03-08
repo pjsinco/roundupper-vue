@@ -38,7 +38,7 @@ div
 
   div.form-group
     label(for="articleType" style="display: block;") Component Type
-    select.form-control#articleType(name="series" v-model="series" @change="seriesChange" style="display: inline-block; width: 50%;")
+    select.form-control#articleType(name="series" v-model="series" style="display: inline-block; width: 50%;")
       option(v-for="type in jaoa.articleTypes" v-bind:value="type.value") {{ type.name }}
     button(class="btn btn-default pull-right" id="showImageForm" v-on:click="showImageForm = !showImageForm" v-text="showImageForm ? 'Remove Image' : 'Add Image'")
 
