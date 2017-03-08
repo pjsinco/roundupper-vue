@@ -35,11 +35,12 @@ div
   div.form-group
     label(for="url") Article URL
     input(type="text" class="form-control" id="url" v-model="articleUrl")
-  
+
   div.form-group
-    label Component Type
-    select.form-control#articleType(name="series" v-model="series" @change="seriesChange")
+    label(for="articleType" style="display: block;") Component Type
+    select.form-control#articleType(name="series" v-model="series" @change="seriesChange" style="display: inline-block; width: 50%;")
       option(v-for="type in jaoa.articleTypes" v-bind:value="type.value") {{ type.name }}
+    button(class="btn btn-default pull-right" id="showImageForm" v-on:click="showImageForm = !showImageForm" v-text="showImageForm ? 'Remove Image' : 'Add Image'")
 
   div.form-group
     div.checkbox-inline
@@ -49,6 +50,5 @@ div
       <label>
           <input type="checkbox" name="free" v-model="free"> Free 
       </label>
-    button(class="btn btn-default btn-xs pull-right" id="showImageForm" v-on:click="showImageForm = !showImageForm" v-text="showImageForm ? 'Remove image' : 'Add image'")
 
   include ./../../includes/copy-buttons
