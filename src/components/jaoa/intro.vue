@@ -23,6 +23,12 @@
     mixins: [mixins],
 
     methods: {
+      copy: function(evt) {
+        this.copyHtml(function(html) {
+          const newHtml = this.surround('Raleway', html, "'")
+          return this.surround('Roboto', newHtml, "'")
+        }.bind(this))
+      },
     },
 
     mounted: function() {
@@ -32,7 +38,7 @@
       teaserStyle: function() {
         return {
           padding: '0 0 20px 0',
-          fontFamily: "'Raleway', Helvetica, arial, sans-serif",
+          fontFamily: `${"\'Raleway\', Helvetica, arial, sans-serif"}`,
           fontWeight: 500,
           fontSize: '22px',
           textAlign: 'left',

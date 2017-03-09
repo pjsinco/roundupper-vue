@@ -28,6 +28,10 @@ console.log('mouseleave');
         //$('#copyHtml').removeClass('tooltipped tooltipped-w');
       },
 
+      getRenderedHtml: function() {
+        return document.getElementById('rendered').innerHTML
+      },
+
       collapseSelection: function(elementId) {
 
         const elem = document.getElementById(elementId)
@@ -37,19 +41,33 @@ console.log('mouseleave');
         }
       },
 
+      cloneHtml: function(html) {
+        document.getElementById('clone').innerText = html
+      },
+
       cloneRenderedVersion: function() {
         const htmlVersion = document.getElementById('rendered')
-        document.getElementById('clone').innerText = htmlVersion.innerHTML
       },
 
       copyTextVersion: () => { 
         console.log('copytextversion') 
       },
 
-      copyHtml: function() {
+      /**
+       * Copy HTML of the rendered element
+       *
+       * @param {function} manipulate Function to execute on markup
+       *   of the rendered element, such as find-replace.
+       */
+      copyHtml: function(manipulate = (html) => html) {
 
-        this.collapseSelection('clone');
-        this.cloneRenderedVersion();
+        this.collapseSelection('clone')
+
+        const rawHtml = this.getRenderedHtml()
+
+        let html = manipulate(rawHtml)
+
+        this.cloneHtml(html)
 
         const clipboard = new Clipboard('#copyHtml', {
           target: function(trigger) {
@@ -68,12 +86,21 @@ console.log('mouseleave');
             this.classList.remove('animated', 'jello');
           }, { once: true })
 
-//          $('#highlight').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-//            $(this).removeClass('animated jello');
-//          });
 //          $('#copyHtml').addClass('tooltipped tooltipped-w');
           clipboard.destroy();
         });
       },
+
+      /**
+       * Surround a term with the surround character
+       *
+       * @param {string} term The string to surround
+       * @param {string} str The string in which to find the term
+       * @param {string} str The character to surround the string
+       */
+      surround: function(term, str, surroundChar) {
+        const re = new RegExp(term, 'g')
+        return str.replace(re, surroundChar + '$&' + surroundChar)
+      }
   }
 }

@@ -24,13 +24,17 @@
     mixins: [mixins],
 
     methods: {
-      seriesChange: function(evt) {
-console.log(this.series, Boolean(this.series));
-      }
+  
+      copy: function(evt) {
+        this.copyHtml(function(html) {
+          const newHtml = this.surround('Raleway', html, "'")
+          return this.surround('Roboto', newHtml, "'")
+        }.bind(this))
+      },
+
     },
 
     mounted: function() {
-console.log(this.series,Boolean(this.series));
     },
 
     computed: {

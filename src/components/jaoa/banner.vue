@@ -21,7 +21,9 @@
     mixins: [mixins],
 
     methods: {
-
+      copy: function(evt) {
+        this.copyHtml()
+      },
     },
 
     data: function() {
