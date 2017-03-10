@@ -57,7 +57,9 @@
 
 <style lang="scss">
 
+  @import './assets/sass/variables';
   @import './../node_modules/animate.css/animate.min.css';
+  @import './assets/sass/tooltipped';
 
   #rendered {
       text-align: center;

@@ -24,8 +24,7 @@ export default {
       },
 
       onMouseLeave: function() {
-console.log('mouseleave');
-        //$('#copyHtml').removeClass('tooltipped tooltipped-w');
+        document.getElementById('copyHtml').classList.remove('tooltipped', 'tooltipped-w')
       },
 
       getRenderedHtml: function() {
@@ -77,8 +76,6 @@ console.log('mouseleave');
 
         clipboard.on('success', function(evt) {
 
-          console.log('Copied!');
-
           const rendered = document.getElementById('rendered')
           rendered.classList.add('animated', 'jello');
 
@@ -86,7 +83,8 @@ console.log('mouseleave');
             this.classList.remove('animated', 'jello');
           }, { once: true })
 
-//          $('#copyHtml').addClass('tooltipped tooltipped-w');
+          document.getElementById('copyHtml').classList.add('tooltipped', 'tooltipped-w')
+
           clipboard.destroy();
         });
       },
