@@ -3,10 +3,10 @@ div.form-group.clearfix(style="margin-top: 40px;")
     span.glyphicon.glyphicon-refresh
     | &nbsp;Reset
   div.btn-group.pull-right
-    button.btn.btn-primary#copyHtml(v-on:click="copy" v-on:mouseleave="onMouseLeave" aria-label="Copied HTML!")
+    button.btn.btn-primary#copyHtml(v-on:click="copy" aria-label="Copied HTML!")
       span.glyphicon.glyphicon-copy
       | &nbsp;Copy HTML
-    button.btn.btn-info#copyTextVersion(v-bind:data-component="currentTemplate" v-on:click="copyTextVersion" v-on:mouseleave="onMouseLeave" aria-label="Copied Text!")
+    button.btn.btn-info#copyTextVersion(v-bind:data-component="currentTemplate" v-on:click="copyTextVersion" aria-label="Copied Text!")
       span.glyphicon.glyphicon-copy
       | &nbsp;Copy text
 
