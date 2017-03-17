@@ -93,8 +93,8 @@
       &:after {
           content: "";
           position: absolute;
-          left: -8.4375em;
-          width: 14.3em;
+          left: -30rem;
+          width: 42rem;
           height: 1px;
           display: block;
           margin-top: .5em;
@@ -150,7 +150,7 @@
    *
    */
   body {
-
+    font-family: $body-font;
   }
 
   .help-block {

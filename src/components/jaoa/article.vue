@@ -26,13 +26,21 @@
     methods: {
   
       copy: function(evt) {
+        this.validate()
         this.copyHtml(function(html) {
           const newHtml = this.surround('Raleway', html, "'")
           return this.surround('Roboto', newHtml, "'")
         }.bind(this))
       },
 
+      validate: function() {
+        if (this.articleUrl === '') {
+          alert('There is no article link!')
+        }
+      },
+
       copyTextVersion: function(evt) {
+        this.validate()
         const text = [
           this.category,
           this.title.toUpperCase(),
