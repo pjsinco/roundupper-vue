@@ -40,7 +40,7 @@
       },
 
       copyTextVersion: function(evt) {
-        this.validate()
+        //this.validate()
         const text = [
           this.category,
           this.title.toUpperCase(),
