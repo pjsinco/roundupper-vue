@@ -46,8 +46,7 @@
 
       toastClose: function() {
         document.getElementById('toastContainer').classList.remove('active')
-        
-      }
+      },
 
     },
 

@@ -87,8 +87,8 @@ export default {
           this.clipboardSuccess(
             document.getElementById('copyHtml'),
             'HTML code copied',
-            'The HTML code is copied to your clipboard. Ready to paste!',
-            '#337ab7'
+            'The HTML code is copied to your clipboard. Ready to paste!'
+            //'#337ab7'
           );
           clipboard.destroy();
         }.bind(this));
@@ -125,8 +125,9 @@ export default {
         clipboard.on('success', function(evt) {
           this.clipboardSuccess(document.getElementById('copyTextVersion'), 
                                 'Text version copied',
-                                'The text version is copied to your clipboard. Ready to paste!',
-                                '#31b0d5');
+                                'The text version is copied to your clipboard. Ready to paste!'
+                                //'#31b0d5'
+          );
           clipboard.destroy();
         }.bind(this))
       },
