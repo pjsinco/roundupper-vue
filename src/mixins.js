@@ -48,8 +48,17 @@ export default {
         const htmlVersion = document.getElementById('rendered')
       },
 
-      copyTextVersion: () => { 
-        console.log('copytextversion') 
+      popUpToast: function(title, message, color = '#2dccb8') {
+        const toast = document.getElementById('toastContainer')
+        document.getElementsByClassName('toast')[0].style.backgroundColor = color
+        toast.querySelector('.toast-title').innerText = title
+        toast.querySelector('.toast-message').innerText = message
+        toast.classList.add('active')
+
+        window.setTimeout(() => {
+          toast.classList.remove('active')
+        }, 3000)
+
       },
 
       /**
@@ -75,12 +84,20 @@ export default {
         });
 
         clipboard.on('success', function(evt) {
-          this.clipboardSuccess(document.getElementById('copyHtml'));
+          this.clipboardSuccess(
+            document.getElementById('copyHtml'),
+            'HTML code copied',
+            'The HTML code is copied to your clipboard. Ready to paste!',
+            '#337ab7'
+          );
           clipboard.destroy();
         }.bind(this));
       },
 
-      clipboardSuccess: function(el) {
+      clipboardSuccess: function(el, 
+                                 title = 'Copied!', 
+                                 message = 'Ready to paste', 
+                                 color = '#2dccb8') {
 
         const rendered = document.getElementById('rendered')
         rendered.classList.add('animated', 'jello');
@@ -89,7 +106,9 @@ export default {
           this.classList.remove('animated', 'jello');
         }, { once: true })
 
-        el.classList.add('tooltipped', 'tooltipped-w')
+        this.popUpToast(title, message, color);
+
+        //el.classList.add('tooltipped', 'tooltipped-w')
       },
 
       /**
@@ -104,7 +123,10 @@ export default {
         })
 
         clipboard.on('success', function(evt) {
-          this.clipboardSuccess(document.getElementById('copyTextVersion'));
+          this.clipboardSuccess(document.getElementById('copyTextVersion'), 
+                                'Text version copied',
+                                'The text version is copied to your clipboard. Ready to paste!',
+                                '#31b0d5');
           clipboard.destroy();
         }.bind(this))
       },
