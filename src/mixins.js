@@ -75,18 +75,38 @@ export default {
         });
 
         clipboard.on('success', function(evt) {
-
-          const rendered = document.getElementById('rendered')
-          rendered.classList.add('animated', 'jello');
-
-          rendered.addEventListener('animationend', function(evt) { 
-            this.classList.remove('animated', 'jello');
-          }, { once: true })
-
-          document.getElementById('copyHtml').classList.add('tooltipped', 'tooltipped-w')
-
+          this.clipboardSuccess(document.getElementById('copyHtml'));
           clipboard.destroy();
-        });
+        }.bind(this));
+      },
+
+      clipboardSuccess: function(el) {
+
+        const rendered = document.getElementById('rendered')
+        rendered.classList.add('animated', 'jello');
+
+        rendered.addEventListener('animationend', function(evt) { 
+          this.classList.remove('animated', 'jello');
+        }, { once: true })
+
+        el.classList.add('tooltipped', 'tooltipped-w')
+      },
+
+      /**
+       * Copy text version of the rendered element
+       *
+       * @param {string} text The text to copy
+       */
+      copyText: function(text) {
+
+        const clipboard = new Clipboard('#copyTextVersion', {
+          text: (trigger) => text
+        })
+
+        clipboard.on('success', function(evt) {
+          this.clipboardSuccess(document.getElementById('copyTextVersion'));
+          clipboard.destroy();
+        }.bind(this))
       },
 
       /**

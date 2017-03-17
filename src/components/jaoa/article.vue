@@ -32,6 +32,24 @@
         }.bind(this))
       },
 
+      copyTextVersion: function(evt) {
+        const text = [
+          this.category,
+          this.title.toUpperCase(),
+          '------------------------------------',
+          this.authors || null,
+          this.authors ? '' : null,
+          this.authors ? '' : null,
+          this.blurb || null,
+          this.blurb ? '' : null,
+          this.blurb ? '' : null,
+          this.articleUrl + (this.free ? ' | FREE' : '') || null,
+          '',
+          '',
+        ].filter((item) => item !== null).join('\n');
+
+        this.copyText(text)
+      }
     },
 
     mounted: function() {

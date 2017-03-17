@@ -29,6 +29,19 @@
           return this.surround('Roboto', newHtml, "'")
         }.bind(this))
       },
+
+      copyTextVersion: function(evt) {
+        const text = [
+          this.teaser.toUpperCase(),
+          this.blurb,
+          this.buttonText,
+          this.url,
+          '',
+          '',
+        ].join('\n');
+
+        this.copyText(text)
+      }
     },
 
     mounted: function() {
