@@ -31,6 +31,7 @@ module.exports = {
     ],
 
     categories: [
+      "AOA Communication",
       "Book Reviews",
       "Brief Report",
       "Case Report",
