@@ -1,0 +1,6 @@
+div
+  div(class="form-group")
+    label(for="board") Board
+    select(class="form-control" id="board" v-model="boardFriendly")
+      option(v-for="board in sortedBoards") {{ board }}
+

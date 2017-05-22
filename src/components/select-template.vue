@@ -7,6 +7,7 @@
         option(value="jaoa-article" selected) Article
         option(value="jaoa-banner") Banner
         option(value="jaoa-intro") Intro
+        option(value="cbs-expiration") CBS Expiration
 
 </template>
 

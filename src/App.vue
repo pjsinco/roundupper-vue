@@ -25,6 +25,7 @@
   import jaoaArticle from './components/jaoa/article.vue'
   import jaoaBanner from './components/jaoa/banner.vue'
   import jaoaIntro from './components/jaoa/intro.vue'
+  import cbsExpiration from './components/cbs/expiration.vue'
 
   export default {
 
@@ -36,6 +37,7 @@
       'jaoa-article': jaoaArticle,
       'jaoa-banner': jaoaBanner,
       'jaoa-intro': jaoaIntro,
+      'cbs-expiration': cbsExpiration,
     },
 
     methods: {

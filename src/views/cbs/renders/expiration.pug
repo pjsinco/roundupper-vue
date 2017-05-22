@@ -1,0 +1,20 @@
+// CONTAINER FOR EMAIL
+table(border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;")
+  tr
+    td(align="center" bgcolor="#f1f2f2")
+
+      // EMAIL START
+      table(class="wrapper" border="0" cellpadding="0" cellspacing="0" width="600")
+        tr
+          td
+            table(border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;")
+              tr
+                td(align="center")
+                  table(class="wrapper" border="0" cellpadding="0" cellspacing="0" width="600")
+                    tr
+                      td(align="center" style="padding: 10px 10px 10px 10px;")
+                        table(class="wrapper" border="0" cellpadding="0" cellspacing="0" width="100%")
+                          tr
+                            td(align="center" style="padding: 15px 0px 15px 0px;")
+                              a(v-bind:href="board.boardUrl" style="font-family: Helvetica, arial, sans-serif; font-weight: normal; font-size: 14px; line-height: 26px; color: #666666; text-decoration: none;" target="_blank")
+                                img(class="fluid-image" border="0" v-bind:src="board.logoSrc" v-bind:alt="board.abbrev" v-bind:width="board.logoW" v-bind:height="board.logoH" style="display: block; padding: 0; color: #466687; font-family: Helvetica, arial, sans-serif; font-size: 16px;")
