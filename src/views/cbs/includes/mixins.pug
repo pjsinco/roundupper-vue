@@ -1,4 +1,5 @@
-mixin button(color, url, text)
+//mixin button(color, url, text)
+mixin button
   // BUTTON
   table(width="100%" border="0" cellspacing="0" cellpadding="0")
     tr
@@ -6,7 +7,8 @@ mixin button(color, url, text)
         table(width="100%" border="0" cellspacing="0" cellpadding="0")
           tr
             td(align="center")
-              a(class="body-text" href=url target="_blank" style="padding: 0px 10px 0px 10px; font-size: 13px; line-height: 26px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; background-color: #466687; border-top: 5px solid #466687; border-bottom: 5px solid #466687; border-left: 20px solid #466687; border-right: 20px solid #466687; display: inline-block; border-radius: 20px;")= text
+              a(class="body-text" v-bind:href="exam.url" target="_blank" v-bind:style="{ padding: '0px 10px 0px 10px', fontSize: '13px', lineHeight: '26px', fontFamily: 'Helvetica, Arial, sans-serif', fontWeight: 'normal', color: '#ffffff', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '2px', backgroundColor: '#466687', borderTop: '5px solid #466687', borderBottom: '5px solid #466687', borderLeft: '20px solid #466687', borderRight: '20px solid #466687', display: 'inline-block', borderRadius: '20px' }")
+                | Apply Now
 
 mixin graf(text)
   tr
@@ -41,48 +43,46 @@ mixin examRow(text, paddingStyle, color, fontWeight, fontSize, lineHeight, style
       if (button)
         +button(button.buttonColor, button.link, button.buttonText)
   
+//mixin exam(color, textColor, date, location, firstDeadline, finalDeadline, link, buttonColor, buttonText)
+mixin exam
+  td(class="padding" align="center" style="padding: 0px 0px 40px 0px;")
+    table(class="wrapper" border="0" cellpadding="0" cellspacing="0" width="320" v-bind:style="{ border: '1px solid #f1f2f2', borderRadius: '4px', borderCollapse: 'separate !important' }")
+      tr
+        td(align="center" width="300" v-bind:style="{ padding: '6px 10px 6px 10px', fontFamily: 'Helvetica, Arial, sans-serif', color: '#466687', fontWeight: 'bold', fontSize: '16px', lineHeight: '23px' }" bgcolor="#f1f2f2")
+          | {{ exam.date }}
 
-mixin exam(color, textColor, date, location, firstDeadline, finalDeadline, link, buttonColor, buttonText)
-  tr
-    td(class="padding" align="center" style="padding: 0px 0px 40px 0px;")
-      table(class="wrapper" border="0" cellpadding="0" cellspacing="0" width="320" style={ border: `1px solid ${color}`, borderRadius: '4px', borderCollapse: 'separate !important' })
-        tr
-          td(align="center" width="300" style={ padding: '6px 10px 6px 10px', fontFamily: 'Helvetica, Arial, sans-serif', color: textColor, fontWeight: 'bold', fontSize: '16px', lineHeight: '23px' } bgcolor=color)
-            | #{date}
-        -var deadlineText = (finalDeadline ? 'First Application Deadline' : 'Application Deadline')
-        -var firstDeadlineDescription = (finalDeadline ? 'No late fee' : null)
-        -var cellPadding = (finalDeadline ? '0px 0px 10px 0px' : '0px 0px 0px 0px')
-        +examRow(location, '15px 0px 0px 0px', textColor, 'normal', '21px', '28px')(class="padding-sides-only")
+      tr
+        td(class="padding-sides-only" align="center" width="300" v-bind:style="{ padding: '15px 0px 0px 0px', fontFamily: 'Helvetica, Arial, sans-serif', color: '#466687', fontWeight: 'normal', fontSize: '21px', lineHeight: '28px'}")
+          | {{ exam.location }}
 
-        +examRow(deadlineText, '12px 0px 0px 0px', '#a2a2a2', 'light', '13px', '18px', { textTransform: 'uppercase', letterSpacing: '1px' })(class="padding-sides-only")
+      tr
+        td(class="padding-sides-only" align="center" width="300" v-bind:style="{ padding: '12px 0px 0px 0px', fontFamily: 'Helvetica, Arial, sans-serif', color: '#a2a2a2', fontWeight: 'light', fontSize: '13px', lineHeight: '18px', textTransform: 'uppercase', letterSpacing: '1px' }")
+          | {{ exam.finalDeadline ? 'First Application Deadline' : 'Application Deadline' }}
 
-        if (firstDeadlineDescription)
-          +examRow(firstDeadlineDescription, '2px, 0px 0px 0px', '#a2a2a2', 'light', '13px', '18px')(class="padding-sides-only")
+      tr(v-if="exam.finalDeadline")
+        td(class="padding-sides-only" align="center" width="300" v-bind:style="{ padding: '2px 0px 0px 0px', fontFamily: 'Helvetica, Arial, sans-serif', color: '#a2a2a2', fontWeight: 'light', fontSize: '13px', lineHeight: '18px' }")
+          | No late fee
 
-        +examRow(firstDeadline, cellPadding, textColor, 'normal', '16px', '26px')(class="padding-sides-only")
+      tr
+        td(class="padding-sides-only" align="center" width="300" v-bind:style="{ padding: (exam.finalDeadline ? '0px 0px 10px 0px' : '0px 0px 0px 0px'), fontFamily: 'Helvetica, Arial, sans-serif', color: '#466687', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px' }")
+          | {{ exam.firstDeadline }}
 
-        if (finalDeadline)
-          +examRow('Final application deadline', '0px 0px 0px 0px', '#a2a2a2', 'light', '13px', '18px', { textTransform: 'uppercase', letterSpacing: '1px'})(class="padding-sides-only")
-          +examRow('With late fee', '2px 0px 0px 0px', '#a2a2a2', 'light', '13px', '18px')(class="padding-sides-only")
-          +examRow(finalDeadline, '0px 0px 0px 0px', textColor, 'normal', '16px', '26px')(class="padding-sides-only")
+      tr(v-if="exam.finalDeadline")
+        td(class="padding-sides-only" align="center" width="300" v-bind:style="{ padding: '0px 0px 0px 0px', fontFamily: 'Helvetica, Arial, sans-serif', color: '#a2a2a2', fontWeight: 'light', fontSize: '13px', lineHeight: '18px', textTransform: 'uppercase', letterSpacing: '1px' }")
+          | Final application deadline
 
-        +examRow('', '0px 0px 20px 0px', color, 'normal', '16px', '26px', {}, { buttonColor, link, buttonText })(class="padding-sides-only")
+      tr(v-if="exam.finalDeadline")
+        td(class="padding-sides-only" align="center" width="300" v-bind:style="{ padding: '2px 0px 0px 0px', fontFamily: 'Helvetica, Arial, sans-serif', color: '#a2a2a2', fontWeight: 'light', fontSize: '13px', lineHeight: '18px' }")
+          | With late fee
 
-mixin baseTd(align = 'left', padding = '0px 0px 15px 0px', valign = 'top', width )
-  -
-    var style = {
-      padding: '0px 0px 15px 0px',
-      fontFamily: 'Helvetica, Arial, sans-serif',
-      color: '#717171',
-      fontWeight: 'normal',
-      fontSize: '16px',
-      lineHeight: '26px',
-    };
+      tr(v-if="exam.finalDeadline")
+        td(class="padding-sides-only" align="center" width="300" v-bind:style="{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#466687', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px' }")
+          | {{ exam.finalDeadline }}
 
-  if width
-    td(class!=attributes.class align=align style=style valign=valign width=width)
-  else
-    td(class!=attributes.class align=align style=style valign=valign)
+      tr
+        td(class="padding-sides-only" align="center" width="300" v-bind:style="{ padding: '0px 0px 20px 0px', fontFamily: 'Helvetica, Arial, sans-serif', color: '#466687', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px' }")
+          +button
+
 
 mixin close()
   tr

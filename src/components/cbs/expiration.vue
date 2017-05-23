@@ -37,6 +37,7 @@
           date: '',
           firstDeadline: '',
           finalDeadline: '',
+          url: '',
         }
         this.exams.push(exam);
       },

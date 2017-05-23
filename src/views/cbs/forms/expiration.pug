@@ -1,28 +1,33 @@
 div
   div(class="form-group")
-    label(for="board") Board
-    select(class="form-control" id="board" v-model="boardFriendly")
+    label Board
+    select(class="form-control" v-model="boardFriendly")
       option(v-for="board in sortedBoards") {{ board }}
 
   transition(name="fade")
-    div(class="image-group" id="examGroup" v-if="showExamForm")
+    div(class="image-group" v-if="showExamForm")
       div(v-for="(exam, index) in exams")
         h3 Exam
         div.form-group
-          label(for="examDate") Date
-          input(type="date" id="examDate" class="form-control" v-model="exam.date" onFocus="this.select();")
+          label Date
+          input(type="date" class="form-control" v-model="exam.date" onFocus="this.select();")
 
         div.form-group
-          label(for="examLoc") Location
-          input(type="text" id="examLoc" class="form-control" v-model="exam.location") 
+          label Location
+          input(type="text" class="form-control" v-model="exam.location") 
 
         div.form-group
-          label(for="examFirstDeadline") First Application Deadline
-          input(type="date" id="examFirstDeadline" class="form-control" v-model="exam.firstDeadline")
+          label First Application Deadline
+          input(type="date" class="form-control" v-model="exam.firstDeadline")
 
         div.form-group
-          label(for="examFinalDeadline") Final Application Deadline (optional)
-          input(type="date" id="examFinalDeadline" class="form-control" v-model="exam.finalDeadline")
+          label Final Application Deadline (optional)
+          input(type="date" class="form-control" v-model="exam.finalDeadline")
+
+        div.form-group
+          label Final Application Deadline (optional)
+          input(type="url" class="form-control" v-model="exam.url")
+
         div.form-group
           button(class="btn btn-default pull-right" id="removeExam" v-on:click="removeExam" v-bind:data-exam="index") Remove Exam
 

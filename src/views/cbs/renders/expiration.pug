@@ -45,10 +45,12 @@ table(border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layou
                             td( align="left" style="padding: 0px 0px 15px 0px; font-family: Helvetica, Arial, sans-serif; color: #717171; font-weight: normal; font-size: 16px; line-height: 26px;" valign="top")
                               | #[span(style="font-family: Helvetica, Arial, sans-serif; color: #466687; font-weight: bold; font-size: 16px; line-height: 26px;") Pass the OCC exam.] You are eligible to take the exam in %%years%%.
 
-                    tr
+                    tr(v-if="exams.length > 0")
                       td(class="padding" align="center" width="300" style="padding: 10px 0px 20px 0px; font-family: Helvetica, Arial, sans-serif; color: #466687; font-weight: 200; font-size: 16px; line-height: 26px; text-transform: uppercase; letter-spacing: 1px;")
                         | Your OCC exam date in 2017
-                    +exam('#f1f2f2', '#466687', 'Sept. 10-17, 2017', 'PearsonVUE Testing Center', 'July 21, 2017', 'July 31, 2017', 'http://www.aobnp.org/apply-today', '#466687', 'Apply Now')
+                  
+                    tr(v-for="(exam, index) in exams")
+                      +exam
 
                     tr
                       td(class="padding")
