@@ -6,5 +6,5 @@ new Vue({
   render: h => h(App)
 })
 
-console.log('hiyf');
+console.log('hiyy');
 

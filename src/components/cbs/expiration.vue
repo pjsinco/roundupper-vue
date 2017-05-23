@@ -2,10 +2,10 @@
 
   div#workspace
 
-    div#form.col-lg-6.col-md-12
+    div#form.col-lg-4.col-md-12
       include ./../../views/cbs/forms/expiration
 
-    div#rendered.col-lg-6.col-md-12
+    div#rendered.col-lg-8.col-md-12
       include ./../../views/cbs/renders/expiration
 
     div#clone(style="position: absolute; top: -5000px; left: -5000px")
