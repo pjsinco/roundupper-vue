@@ -5,8 +5,8 @@ div
       option(v-for="board in sortedBoards") {{ board }}
 
   transition(name="fade")
-    div(class="image-group" v-if="showExamForm")
-      div(v-for="(exam, index) in exams")
+    div(v-if="showExamForm")
+      div(class="image-group clearfix" v-for="(exam, index) in exams")
         h3 Exam
         div.form-group
           label Date
@@ -25,16 +25,13 @@ div
           input(type="date" class="form-control" v-model="exam.finalDeadline")
 
         div.form-group
-          label Final Application Deadline (optional)
-          input(type="url" class="form-control" v-model="exam.url")
+          label Link to application
+          input(type="url" class="form-control" v-model="exam.url" placeholder="https://www.example.com")
 
         div.form-group
-          button(class="btn btn-default pull-right" id="removeExam" v-on:click="removeExam" v-bind:data-exam="index") Remove Exam
+          button(class="btn btn-xs btn-danger pull-right" id="removeExam" v-on:click="removeExam" v-bind:data-exam="index") Remove Exam
 
-        pre
-          | {{ $data.exams | json }}
-
-  div.form-group
-    button(class="btn btn-default pull-right" id="showExamForm" v-on:click="addExam") Add Exam
+  div.form-group.clearfix
+    button(class="btn btn-default pull-right" id="showExamForm" v-on:click="addExam" v-text="exams.length > 0 ? 'Add Another Exam' : 'Add Exam'")
 
   include ./../../includes/copy-buttons

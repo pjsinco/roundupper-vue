@@ -46,8 +46,7 @@ table(border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layou
                               | #[span(style="font-family: Helvetica, Arial, sans-serif; color: #466687; font-weight: bold; font-size: 16px; line-height: 26px;") Pass the OCC exam.] You are eligible to take the exam in %%years%%.
 
                     tr(v-if="exams.length > 0")
-                      td(class="padding" align="center" width="300" style="padding: 10px 0px 20px 0px; font-family: Helvetica, Arial, sans-serif; color: #466687; font-weight: 200; font-size: 16px; line-height: 26px; text-transform: uppercase; letter-spacing: 1px;")
-                        | Your OCC exam date in 2017
+                      td(class="padding" align="center" width="300" style="padding: 10px 0px 20px 0px; font-family: Helvetica, Arial, sans-serif; color: #466687; font-weight: 200; font-size: 16px; line-height: 26px; text-transform: uppercase; letter-spacing: 1px;" v-text="exams.length > 1 ? 'Your OCC exam dates in 2017' : 'Your OCC exam date in 2017'")
                   
                     tr(v-for="(exam, index) in exams")
                       +exam
