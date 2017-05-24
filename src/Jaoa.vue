@@ -1,21 +1,20 @@
 <template lang="pug">
-  <div>
-    <div class="row">
-      <rupper-header>Roundupper</rupper-header>
-      <div class="col-xs-offset-4 col-xs-4">
-        <select-template v-on:template-selected="handleTemplateSelect"></select-template>
-      </div>
-    </div>
+  div
+    div.row
+      rupper-header
+      div.col-xs-offset-4.col-xs-4
+        select-template(v-on:template-selected="handleTemplateSelect")
+          option(value="jaoa-article" selected) Article
+          option(value="jaoa-banner") Banner
+          option(value="jaoa-intro") Intro
 
-    <div class="row">
-      <hr>
-      <transition name="fade" appear mode="out-in">
-        <component v-bind:is="currentTemplate" v-bind:current-template="currentTemplate"></component>
-      </transition>
-    </div>
+    div.row
+      hr
+      transition(name="fade" appear mode="out-in")
+        component(v-bind:is="currentTemplate" v-bind:current-template="currentTemplate")
+
     include ./views/includes/toast
     
-  </div>
 </template>
 
 <script>
@@ -25,7 +24,6 @@
   import jaoaArticle from './components/jaoa/article.vue'
   import jaoaBanner from './components/jaoa/banner.vue'
   import jaoaIntro from './components/jaoa/intro.vue'
-  import cbsExpiration from './components/cbs/expiration.vue'
 
   export default {
 
@@ -37,7 +35,6 @@
       'jaoa-article': jaoaArticle,
       'jaoa-banner': jaoaBanner,
       'jaoa-intro': jaoaIntro,
-      'cbs-expiration': cbsExpiration,
     },
 
     methods: {
@@ -175,5 +172,15 @@
   .btn-info:focus {
     background-color: #31b0d5;
     border-color: #269abc;
+  }
+
+  .stick {
+    position: fixed !important;
+    top: 1rem;
+    height: 100%;
+    overflow-y: scroll;
+  }
+  .sidebar {
+    position: absolute;
   }
 </style>

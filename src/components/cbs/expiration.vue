@@ -2,10 +2,10 @@
 
   div#workspace
 
-    div#form.col-lg-4.col-md-12
+    div#form.col-lg-4.col-md-12.sidebar
       include ./../../views/cbs/forms/expiration
 
-    div#rendered.col-lg-8.col-md-12
+    div#rendered.col-lg-7.col-md-12.pull-right
       include ./../../views/cbs/renders/expiration
 
     div#clone(style="position: absolute; top: -5000px; left: -5000px")
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import moment from 'moment'
   import { cbs } from './../../app-constants'
   import mixins from './../../mixins'
   import cbsExam from './exam.vue'
@@ -76,7 +77,14 @@
       sortedBoards: function() {
         return Object.keys(cbs.boards).sort();
       } 
-    }
+    },
+
+    filters: {
+      formatDate: function(rawDate) {
+        if (! rawDate) return
+        return moment(rawDate).format('MMMM D, YYYY');
+      },
+    },
   }
 
 </script>
