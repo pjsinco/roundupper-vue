@@ -29,7 +29,7 @@
 
   export default {
 
-    name: 'app',
+    name: 'jaoa',
 
     components: {
       'rupper-header': rupperHeader,
