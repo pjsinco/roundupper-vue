@@ -3,25 +3,6 @@ import Jaoa from './Jaoa.vue'
 import Cbs from './Cbs.vue'
 import Home from './Home.vue'
 
-$(document).ready(function() {
-
-  //if (window.location.pathname !== '/cbs') return;
-
-  // Add a sticky sidebar
-  const $window = $(window);
-  const $sidebar = $('#form');
-  const $navbar = $('#nav')
-  const stickValue = $navbar.height();
-
-  $window.scroll(function() {
-    if ( $window.scrollTop() >= stickValue ) {
-      $sidebar.addClass('stick');
-    } else {
-      $sidebar.removeClass('stick');
-    }
-  });
-});
-
 const routes = {
   '/': Home,
   '/jaoa': Jaoa,

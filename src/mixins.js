@@ -4,6 +4,19 @@ export default {
 
   mounted: function() {
     this.addSelectOnFocus()
+
+    const $window = $(window);
+    const $sidebar = $('#form');
+    const $navbar = $('#nav')
+    const stickValue = $navbar.height();
+
+    $window.scroll(function() {
+      if ( $window.scrollTop() >= stickValue ) {
+        $sidebar.addClass('stick');
+      } else {
+        $sidebar.removeClass('stick');
+      }
+    });
   },
 
   props: [ 'currentTemplate' ],
@@ -100,10 +113,10 @@ export default {
                                  color = '#2dccb8') {
 
         const rendered = document.getElementById('rendered')
-        rendered.classList.add('animated', 'fadeIn');
+        rendered.classList.add('animated', 'jello');
 
         rendered.addEventListener('animationend', function(evt) { 
-          this.classList.remove('animated', 'fadeIn');
+          this.classList.remove('animated', 'jello');
         }, { once: true })
 
         this.popUpToast(title, message, color);
