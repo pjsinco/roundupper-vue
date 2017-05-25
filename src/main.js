@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Jaoa from './Jaoa.vue'
 import Cbs from './Cbs.vue'
+import Home from './Home.vue'
 
 $(document).ready(function() {
 
@@ -21,6 +22,7 @@ $(document).ready(function() {
 });
 
 const routes = {
+  '/': Home,
   '/jaoa': Jaoa,
   '/cbs': Cbs,
 };
