@@ -100,10 +100,10 @@ export default {
                                  color = '#2dccb8') {
 
         const rendered = document.getElementById('rendered')
-        rendered.classList.add('animated', 'jello');
+        rendered.classList.add('animated', 'fadeIn');
 
         rendered.addEventListener('animationend', function(evt) { 
-          this.classList.remove('animated', 'jello');
+          this.classList.remove('animated', 'fadeIn');
         }, { once: true })
 
         this.popUpToast(title, message, color);

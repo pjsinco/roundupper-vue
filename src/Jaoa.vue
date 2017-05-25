@@ -1,25 +1,21 @@
 <template lang="pug">
-  div
-    div.row
-      rupper-header
-      div.col-xs-offset-4.col-xs-4
-        select-template(v-on:template-selected="handleTemplateSelect")
-          option(value="jaoa-article" selected) Article
-          option(value="jaoa-banner") Banner
-          option(value="jaoa-intro") Intro
+div.blank
+  navbar(templateName="JAOA")
+    select-template(slot="select" v-on:template-selected="handleTemplateSelect")
+      option(value="jaoa-article" selected) Article
+      option(value="jaoa-banner") Banner
+      option(value="jaoa-intro") Intro
 
-    div.row
-      hr
-      transition(name="fade" appear mode="out-in")
-        component(v-bind:is="currentTemplate" v-bind:current-template="currentTemplate")
+  transition(name="fade" appear mode="out-in")
+    component(v-bind:is="currentTemplate" v-bind:current-template="currentTemplate")
 
-    include ./views/includes/toast
-    
+  include ./views/includes/toast
 </template>
 
 <script>
 
   import rupperHeader from './components/header.vue'
+  import navbar from './components/navbar.vue'
   import selectTemplate from './components/select-template.vue'
   import jaoaArticle from './components/jaoa/article.vue'
   import jaoaBanner from './components/jaoa/banner.vue'
@@ -31,6 +27,7 @@
 
     components: {
       'rupper-header': rupperHeader,
+      'navbar': navbar,
       'select-template': selectTemplate,
       'jaoa-article': jaoaArticle,
       'jaoa-banner': jaoaBanner,

@@ -1,28 +1,26 @@
 <template lang="pug">
-  div
-    div.row
-      rupper-header
-      div.col-xs-offset-4.col-xs-4
-        form#selectRupperType
-          div.form-group
-            //label(for="articleType") Choose your Roundupper
-            select.form-control.input-lg#rupperType(name="type" v-on:change="handleChange")
-              option(selected) Select Your Roundupper
-              option(value="jaoa" ) JAOA
-              option(value="cbs" ) Certifying Board Services
+  navbar(templateName="Choose Template")
 
 </template>
 
 <script>
   import rupperHeader from './components/header.vue'
+  import navbar from './components/navbar.vue'
+  import mixins from './mixins'
 
   export default {
 
     name: 'home',
 
+    mounted: function() {
+    },
+
     components: {
       'rupper-header': rupperHeader,
+      'navbar': navbar,
     },
+
+    mixins: [mixins],
 
     methods: {
       handleChange: function(evt) {
@@ -47,6 +45,11 @@
   @import './../node_modules/animate.css/animate.min.css';
   @import './assets/sass/tooltipped';
   @import './assets/sass/toast';
+  
+  html,
+  body {
+    height: 100%;
+  }
 
   #rendered {
       text-align: center;
@@ -125,6 +128,69 @@
   .fade-leave-to {
     opacity: 0;
   }
+
+  .stick {
+    position: fixed !important;
+    //top: 1rem;
+    height: 100%;
+    width: 50%;
+    overflow-y: scroll;
+  }
+
+  .workspace {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .form-container {
+    position: relative;
+    width: 50%;
+    //background-color: #f5f5f5;
+    border-right: 1px solid #d0d0d0;
+  }
+
+  .rendered-container, 
+  .rendered-container--no-padding {
+    width: 50%;
+  }
+
+  .rendered-container {
+    padding: 2rem;
+  }
+
+  .form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+  }
+
+  .sidebar {
+    //position: absolute;
+  }
+
+  .navbar-center {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .navbar-center label {
+    margin-right: 8px;
+  }
+
+  .blank {
+    height: 100%;
+  }
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
   
   /**
    * Bootstrap overrides
@@ -156,20 +222,10 @@
     background-color: #31b0d5;
     border-color: #269abc;
   }
-
-  .stick {
-    position: fixed !important;
-    top: 1rem;
-    height: 100%;
-    overflow-y: scroll;
-  }
-  .sidebar {
-    position: absolute;
+  
+  .navbar {
+    border-radius: 0px;
+    margin-bottom: 0;
   }
 
-  .clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
 </style>

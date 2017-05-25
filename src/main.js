@@ -5,12 +5,13 @@ import Home from './Home.vue'
 
 $(document).ready(function() {
 
-  if (window.location.pathname !== '/cbs') return;
+  //if (window.location.pathname !== '/cbs') return;
 
   // Add a sticky sidebar
   const $window = $(window);
   const $sidebar = $('#form');
-  const stickValue = 170
+  const $navbar = $('#nav')
+  const stickValue = $navbar.height();
 
   $window.scroll(function() {
     if ( $window.scrollTop() >= stickValue ) {

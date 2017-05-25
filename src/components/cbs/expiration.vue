@@ -1,12 +1,14 @@
 <template lang="pug">
 
-  div#workspace
+  div#workspace.clearfix.workspace
 
-    div#form.col-lg-4.col-md-12.sidebar
-      include ./../../views/cbs/forms/expiration
+    div.form-container
+      div#form.form
+        include ./../../views/cbs/forms/expiration
 
-    div#rendered.col-lg-7.col-md-12.pull-right
-      include ./../../views/cbs/renders/expiration
+    div.rendered-container--no-padding
+      div#rendered
+        include ./../../views/cbs/renders/expiration
 
     div#clone(style="position: absolute; top: -5000px; left: -5000px")
 

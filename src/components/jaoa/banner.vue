@@ -1,15 +1,12 @@
 <template lang="pug">
-
-  div#workspace
-
-    div#form.col-lg-6.col-md-12
-      include ./../../views/jaoa/forms/banner
-
-    div#rendered.col-lg-6.col-md-12
-      include ./../../views/jaoa/renders/banner
-
+  div#workspace.clearfix.workspace
+    div.form-container
+      div#form.form
+        include ./../../views/jaoa/forms/banner
+    div.rendered-container
+      div#rendered
+        include ./../../views/jaoa/renders/banner
     div#clone(style="position: absolute; top: -5000px; left: -5000px")
-
 </template>
 
 <script>
