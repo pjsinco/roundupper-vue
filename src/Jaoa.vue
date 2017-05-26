@@ -14,7 +14,6 @@ div.blank
 
 <script>
 
-  import rupperHeader from './components/header.vue'
   import navbar from './components/navbar.vue'
   import selectTemplate from './components/select-template.vue'
   import jaoaArticle from './components/jaoa/article.vue'
@@ -26,7 +25,6 @@ div.blank
     name: 'jaoa',
 
     components: {
-      'rupper-header': rupperHeader,
       'navbar': navbar,
       'select-template': selectTemplate,
       'jaoa-article': jaoaArticle,

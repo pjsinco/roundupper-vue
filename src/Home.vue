@@ -4,7 +4,6 @@
 </template>
 
 <script>
-  import rupperHeader from './components/header.vue'
   import navbar from './components/navbar.vue'
   import mixins from './mixins'
 
@@ -16,7 +15,6 @@
     },
 
     components: {
-      'rupper-header': rupperHeader,
       'navbar': navbar,
     },
 

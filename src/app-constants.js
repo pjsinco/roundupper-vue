@@ -1,6 +1,23 @@
 var colorMap = require('./constants/color-map.js');
 
 module.exports = {
+  app: {
+    routes: [
+      {
+        path: '/the-do',
+        name: 'The DO'
+      },
+      {
+        path: '/jaoa',
+        name: 'JAOA'
+      },
+      {
+        path: '/cbs',
+        name: 'Certifying Board Services'
+      },
+    ],
+  },
+
   cbs: {
     boards: {
       "Emergency Medicine": {
