@@ -1,20 +1,19 @@
-<template>
-<div class="blank">
-  <navbar templateName="The DO">
-    <select-template slot="select" v-on:template="handleTemplateSelect">
-      <optgroup label="Stories">
-        <option value="the-do-top-story">Top Story</option>
-        <option value="the-do-feature" selected>Feature</option>
-        <option value="the-do-brief">Brief</option>
-      </optgroup>
-      <optgroup label="Other parts">
-        <option value="the-do-quote">Quote</option>
-        <option value="the-do-section-title">Section Title</option>
-        <option value="the-do-date">Date</option>
-      </optgroup>
-    </select-template>
-  </navbar>
-</div>
+<template lang="pug">
+div.blank
+  navbar(templateName="The DO")
+    select-template(slot="select" v-on:template-selected="handleTemplateSelect")
+      optgroup(label="Stories")
+        option(value="the-do-top-story") Top Story
+        option(value="the-do-feature") Feature
+        option(value="the-do-brief") Brief
+      optgroup(label="Other parts")
+        option(value="the-do-quote") Quote
+        option(value="the-do-section-title") Section Title
+        option(value="the-do-date" selected) Date
+  transition(name="fade" appear mode="out-in")
+    component(v-bind:is="currentTemplate" v-bind:current-template="currentTemplate")
+
+  include ./views/includes/toast
 </template>
 
 <script>
@@ -43,7 +42,21 @@
       'the-do-date': date,
     },
 
+    data: function() {
+      return {
+        currentTemplate: 'the-do-date',
+      }
+    },
+
     methods: {
+      handleTemplateSelect: function(template) {
+console.log(template);
+        this.currentTemplate = template;
+      },
+
+      toastClose: function() {
+        document.getElementById('toastContainer').classList.remove('active')
+      },
 
     }
 
