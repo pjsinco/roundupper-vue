@@ -1,9 +1,59 @@
 import Clipboard from './../node_modules/clipboard/dist/clipboard.min.js'
 
+
+function updateHeights() {
+  const splitLeft = document.querySelector('.form-container');
+  const splitRight = document.querySelector('.rendered-container'); 
+
+  splitLeft.style.height = 'auto';
+  splitRight.style.height = 'auto';
+
+  //console.log('before leftHeight: ' + splitLeft.scrollHeight);
+  //console.log('before rightHeight: ' + splitRight.scrollHeight);
+
+  const maxHeight = Math.max(splitLeft.scrollHeight, splitRight.scrollHeight);
+  const shortest = splitLeft.scrollHeight < maxHeight ? splitLeft : splitRight;
+
+  shortest.style.height = `${maxHeight}px`;
+
+  //console.log('after leftHeight: ' + splitLeft.scrollHeight);
+  //console.log('after rightHeight: ' + splitRight.scrollHeight);
+}
+
 export default {
 
+
+  updated: function() {
+    //updateHeights();
+  },
+
   mounted: function() {
+
+    //updateHeights();
+
     this.addSelectOnFocus()
+    const splitLeft = document.querySelector('.form-container');
+    const splitRight = document.querySelector('.rendered-container'); 
+
+    const $window = $(window);
+    const $sidebar = $('#form');
+    const $splitRight = $('.rendered-container');
+    const $navbar = $('#nav')
+    const stickValue = $navbar.height();
+
+    $window.scroll(function() {
+      if ( $window.scrollTop() >= stickValue ) {
+        if ( splitLeft.scrollHeight < splitRight.scrollHeight) {
+          $sidebar.addClass('stick');
+        } else {
+          $splitRight.addClass('stick');
+        }
+      } else {
+        $splitRight.removeClass('stick');
+        $sidebar.removeClass('stick');
+      }
+
+    });
   },
 
   props: [ 'currentTemplate' ],

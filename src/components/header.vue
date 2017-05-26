@@ -2,7 +2,7 @@
 
   <div class="col-xs-12">
     <h1 class="page-heading">
-      <slot></slot>
+      Roundupper
     </h1>
   </div>
 

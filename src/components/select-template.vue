@@ -1,12 +1,9 @@
 <template lang="pug">
-
-  form#selectArticleType
+  form.form-inline#selectArticleType(slot="select")
     div.form-group
       label(for="articleType") Select component to create
-      select.form-control.input-lg#articleType(name="type" @change="handleChange")
-        option(value="jaoa-article" selected) Article
-        option(value="jaoa-banner") Banner
-        option(value="jaoa-intro") Intro
+      select.form-control.input-sm#articleType(name="type" v-on:change="handleChange")
+        slot
 
 </template>
 
