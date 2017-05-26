@@ -1,6 +1,6 @@
 div
   div.form-group
     label(for="date") Date of Roundup
-    input(type="text" id="date" class="form-control" v-model="date")
+    input(type="text" id="date" class="form-control" v-bind:value="date" v-on:input="dateChange")
 
   include ./../../includes/copy-buttons
