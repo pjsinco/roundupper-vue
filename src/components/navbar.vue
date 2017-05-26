@@ -5,7 +5,7 @@
         <a class="navbar-brand" href="/">Roundupper</a>
       </div>
       
-      <div class="navbar-center" style="width: 25%;">
+      <div class="navbar-center">
         <slot name="select"></slot>
       </div>
 

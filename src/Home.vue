@@ -51,6 +51,22 @@
     height: 100%;
   }
 
+  #app {
+
+  }
+
+  body:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    transform: translateX(-50%);
+    width: 1px;
+    background-color: #d0d0d0;
+  }
+
   #rendered {
       text-align: center;
   }
@@ -139,25 +155,57 @@
 
   .workspace {
     position: relative;
-    height: 100%;
+    //height: 100%;
+    height: calc(100% - 52px);
     display: flex;
     justify-content: space-between;
   }
 
   .form-container {
-    position: relative;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
     width: 50%;
+    z-index: 1;
+    //box-shadow: 3px 0 4px 2px rgba(0, 0, 0, 0.05);
     //background-color: #f5f5f5;
-    border-right: 1px solid #d0d0d0;
+    //border-right: 1px solid #d0d0d0;
   }
 
-  .rendered-container, 
-  .rendered-container--no-padding {
-    width: 50%;
+  .no-padding {
+    padding: 0 !important;
   }
 
   .rendered-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    
+    width: 50%;
     padding: 2rem;
+    font-size: 93.8%;    
+    background-color: #ffffff; 
+    background-image: 
+      -webkit-linear-gradient(0deg, transparent .05em, rgba(0,0,0,.05) .05em, rgba(0,0,0,.05) .125000em, transparent .125000em),
+      -webkit-linear-gradient(rgba(0,0,0,.05) .062500em, transparent .062500em);
+    background-image: 
+      -moz-linear-gradient(0deg, transparent .05em, rgba(0,0,0,.05) .05em, rgba(0,0,0,.05) .125000em, transparent .125000em),
+      -moz-linear-gradient(rgba(0,0,0,.05) .062500em, transparent .062500em);
+    background-image: 
+      -ms-linear-gradient(0deg, transparent .05em, rgba(0,0,0,.05) .05em, rgba(0,0,0,.05) .125000em, transparent .125000em),
+      -ms-linear-gradient(rgba(0,0,0,.05) .062500em, transparent .062500em);
+    background-image: 
+      -o-linear-gradient(0deg, transparent .05em, rgba(0,0,0,.05) .05em, rgba(0,0,0,.05) .125000em, transparent .125000em),
+      -o-linear-gradient(rgba(0,0,0,.05) .062500em, transparent .062500em);
+    background-image: 
+      linear-gradient(0deg, transparent .05em, rgba(0,0,0,.05) .05em, rgba(0,0,0,.05) .125000em, transparent .125000em),
+      inear-gradient(rgba(0,0,0,.05) .062500em, transparent .062500em);
+    background-size: .75em .75em;  
+    background-position: 0 -0.5em; 
+
+
   }
 
   .form {
@@ -170,6 +218,11 @@
 
   .sidebar {
     //position: absolute;
+  }
+
+  .navbar {
+    position: relative;
+    z-index: 1;
   }
 
   .navbar-center {

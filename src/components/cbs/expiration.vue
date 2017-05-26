@@ -6,7 +6,7 @@
       div#form.form
         include ./../../views/cbs/forms/expiration
 
-    div.rendered-container--no-padding
+    div.rendered-container.no-padding
       div#rendered
         include ./../../views/cbs/renders/expiration
 
