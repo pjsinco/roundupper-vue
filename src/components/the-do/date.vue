@@ -2,8 +2,6 @@
   workspace
     include ./../../views/the-do/forms/date
     include ./../../views/the-do/renders/date
-
-    div#clone(style="position: absolute; top: -5000px; left: -5000px")
 </template>
 
 <script>

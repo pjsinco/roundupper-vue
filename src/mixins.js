@@ -2,8 +2,8 @@ import Clipboard from './../node_modules/clipboard/dist/clipboard.min.js'
 
 
 function updateHeights() {
-  const splitLeft = document.querySelector('.form-container');
-  const splitRight = document.querySelector('.rendered-container'); 
+  const splitLeft = document.querySelector('.split-left');
+  const splitRight = document.querySelector('.split-right'); 
 
   splitLeft.style.height = 'auto';
   splitRight.style.height = 'auto';
@@ -32,12 +32,12 @@ export default {
     //updateHeights();
 
     this.addSelectOnFocus()
-    const splitLeft = document.querySelector('.form-container');
-    const splitRight = document.querySelector('.rendered-container'); 
+    const splitLeft = document.querySelector('.split-left');
+    const splitRight = document.querySelector('.split-right'); 
 
     const $window = $(window);
     const $sidebar = $('#form');
-    const $splitRight = $('.rendered-container');
+    const $splitRight = $('.split-right');
     const $navbar = $('#nav')
     const stickValue = $navbar.height();
 
