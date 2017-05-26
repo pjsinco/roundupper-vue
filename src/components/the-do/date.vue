@@ -1,24 +1,25 @@
 <template lang="pug">
-  div#workspace.clearfix.workspace
-    div.form-container
-      div#form.form
-        include ./../../views/the-do/forms/date
-    div.rendered-container
-      div#rendered
-        include ./../../views/the-do/renders/date
-    div#clone(style="position: absolute; top: -5000px; left: -5000px")
+  workspace
+    include ./../../views/the-do/forms/date
+    include ./../../views/the-do/renders/date
 
+    div#clone(style="position: absolute; top: -5000px; left: -5000px")
 </template>
 
 <script>
   import mixins from './../../mixins';
   import moment from 'moment';
+  import workspace from './../workspace.vue';
 
   export default {
 
     name: 'the-do-date',
 
     mixins: [mixins],
+    
+    components: {
+      'workspace': workspace,
+    },
 
     methods: {
 

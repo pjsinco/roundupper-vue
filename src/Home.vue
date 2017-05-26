@@ -159,30 +159,28 @@
     justify-content: space-between;
   }
 
-  .form-container {
+  .column {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
     width: 50%;
+  }
+
+  .split-left {
+    left: 0;
     z-index: 1;
     //box-shadow: 3px 0 4px 2px rgba(0, 0, 0, 0.05);
     //background-color: #f5f5f5;
     //border-right: 1px solid #d0d0d0;
   }
 
-  .no-padding {
-    padding: 0 !important;
-  }
-
-  .rendered-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
+  .split-right {
     right: 0;
-    
     width: 50%;
     padding: 2rem;
+  }
+
+  .graph-paper {
     font-size: 93.8%;    
     background-color: #ffffff; 
     background-image: 
@@ -203,8 +201,13 @@
     background-size: .75em .75em;  
     background-position: 0 -0.5em; 
 
-
   }
+
+
+  .no-padding {
+    padding: 0 !important;
+  }
+
 
   .form {
     position: absolute;

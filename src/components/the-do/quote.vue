@@ -1,25 +1,23 @@
 <template lang="pug">
-  div#workspace.clearfix.workspace
-    div.form-container
-      div#form.form
-        include ./../../views/the-do/forms/quote
-
-    div.rendered-container
-      div#rendered
-        include ./../../views/the-do/renders/quote
-
-    div#clone(style="position: absolute; top: -5000px; left: -5000px")
+  workspace
+    include ./../../views/the-do/forms/quote
+    include ./../../views/the-do/renders/quote
 </template>
 
 <script>
 
   import mixins from './../../mixins';
+  import workspace from './../workspace.vue';
 
   export default {
 
     name: 'the-do-quote',
 
     mixins: [mixins],
+
+    components: {
+      'workspace': workspace,
+    },
 
     methods: {
       copy: function() {
