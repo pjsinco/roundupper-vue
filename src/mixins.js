@@ -1,11 +1,17 @@
 import Clipboard from './../node_modules/clipboard/dist/clipboard.min.js'
 
 
-function updateHeights() {
+function updateHeights(context = '') {
 
-  console.log('updatingHeights');
+  console.log('updatingHeights in ' + context);
   const splitLeft = document.querySelector('.split-left');
   const splitRight = document.querySelector('.split-right'); 
+
+  console.log('sR sh: ' + splitRight.scrollHeight );
+  console.log('sR oh: ' + splitRight.offsetHeight );
+
+  //splitLeft.style.height = 'auto';
+  //splitRight.style.height = 'auto';
 
   /**
    * If we have scrollbars, make sure the height of that element
@@ -14,8 +20,10 @@ function updateHeights() {
    * and .split-right.
    */
   if ( splitRight.scrollHeight > splitRight.offsetHeight )  {
+    console.log('adding height to split-right');
     splitRight.style.height = document.body.scrollHeight + 'px';
   } else if ( splitLeft.scrollHeight > splitLeft.offsetHeight )  {
+    console.log('adding height to split-left');
     splitLeft.style.height = document.body.scrollHeight + 'px';
   }
 
@@ -26,12 +34,12 @@ export default {
 
 
   updated: function() {
-    //updateHeights();
+    updateHeights('updated');
   },
 
   mounted: function() {
 
-    //updateHeights();
+    updateHeights('mounted');
 
     this.addSelectOnFocus()
     const splitLeft = document.querySelector('.split-left');
@@ -43,7 +51,7 @@ export default {
     const $navbar = $('#nav')
     const stickValue = $navbar.height();
 
-    //$window.resize(updateHeights);
+    $window.resize(updateHeights);
 
     $window.scroll(function() {
       if ( $window.scrollTop() >= stickValue ) {
