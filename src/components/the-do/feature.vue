@@ -1,0 +1,60 @@
+<template lang="pug">
+
+  workspace
+    include ./../../views/the-do/forms/article
+    include ./../../views/the-do/renders/feature
+
+</template>
+
+<script>
+
+  import workspace from './../workspace.vue';
+  import mixins from './../../mixins';
+
+  export default {
+    
+    name: 'the-do-feature',
+
+    components: {
+      'workspace': workspace,
+    },
+
+    mixins: [mixins],
+
+    methods: {
+      copy: function() {
+        this.copyHtml();
+      },
+
+      copyTextVersion: function() {
+
+        const text = [
+          this.kicker,
+          this.headline.toUpperCase(),
+          '------------------------------------' +
+              '------------------------------------',
+          this.excerpt,
+          this.link,
+          '',
+        ].join('\n');
+
+        return this.copyText(text);
+      },
+    },
+
+    data: function() {
+
+      return {
+        kicker: 'lorem kicker',
+        headline: 'Lorem headline',
+        excerpt: 'Lorem excerpt',
+        link: '',
+        imageUrl: 'http://placehold.it/320x213',
+        ruleBelow: true,
+        ruleAbove: false,
+        hasRules: true,
+      };
+    },
+
+  }
+</script>

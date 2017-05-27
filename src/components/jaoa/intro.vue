@@ -1,12 +1,7 @@
 <template lang="pug">
-  div#workspace.clearfix.workspace
-    div.form-container
-      div#form.form
-        include ./../../views/jaoa/forms/intro
-    div.rendered-container
-      div#rendered
-        include ./../../views/jaoa/renders/intro
-    div#clone(style="position: absolute; top: -5000px; left: -5000px")
+  workspace
+    include ./../../views/jaoa/forms/intro
+    include ./../../views/jaoa/renders/intro
 </template>
 
 <script>
@@ -14,10 +9,15 @@
   import mixins from './../../mixins'
   import { jaoa } from     './../../app-constants'
   import colorMap from './../../constants/color-map'
+  import workspace from './../workspace.vue';
 
   export default {
 
     mixins: [mixins],
+
+    components: {
+      'workspace': workspace,
+    },
 
     methods: {
       copy: function(evt) {

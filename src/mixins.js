@@ -2,23 +2,25 @@ import Clipboard from './../node_modules/clipboard/dist/clipboard.min.js'
 
 
 function updateHeights() {
+
+  console.log('updatingHeights');
   const splitLeft = document.querySelector('.split-left');
   const splitRight = document.querySelector('.split-right'); 
 
-  splitLeft.style.height = 'auto';
-  splitRight.style.height = 'auto';
+  /**
+   * If we have scrollbars, make sure the height of that element
+   * stretches the full length of the document body
+   * This prevents white gaps in background fills on .split-left,
+   * and .split-right.
+   */
+  if ( splitRight.scrollHeight > splitRight.offsetHeight )  {
+    splitRight.style.height = document.body.scrollHeight + 'px';
+  } else if ( splitLeft.scrollHeight > splitLeft.offsetHeight )  {
+    splitLeft.style.height = document.body.scrollHeight + 'px';
+  }
 
-  //console.log('before leftHeight: ' + splitLeft.scrollHeight);
-  //console.log('before rightHeight: ' + splitRight.scrollHeight);
-
-  const maxHeight = Math.max(splitLeft.scrollHeight, splitRight.scrollHeight);
-  const shortest = splitLeft.scrollHeight < maxHeight ? splitLeft : splitRight;
-
-  shortest.style.height = `${maxHeight}px`;
-
-  //console.log('after leftHeight: ' + splitLeft.scrollHeight);
-  //console.log('after rightHeight: ' + splitRight.scrollHeight);
 }
+
 
 export default {
 
@@ -41,12 +43,16 @@ export default {
     const $navbar = $('#nav')
     const stickValue = $navbar.height();
 
+    //$window.resize(updateHeights);
+
     $window.scroll(function() {
       if ( $window.scrollTop() >= stickValue ) {
         if ( splitLeft.scrollHeight < splitRight.scrollHeight) {
           $sidebar.addClass('stick');
+          
         } else {
           $splitRight.addClass('stick');
+
         }
       } else {
         $splitRight.removeClass('stick');
