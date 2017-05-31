@@ -1,52 +1,70 @@
 import Clipboard from './../node_modules/clipboard/dist/clipboard.min.js'
 
 
-function updateHeights() {
-  const splitLeft = document.querySelector('.form-container');
-  const splitRight = document.querySelector('.rendered-container'); 
+function updateHeights(context = '') {
 
-  splitLeft.style.height = 'auto';
-  splitRight.style.height = 'auto';
+  console.log('updatingHeights in ' + context);
+  const splitLeft = document.querySelector('.split-left');
+  const splitRight = document.querySelector('.split-right'); 
 
-  //console.log('before leftHeight: ' + splitLeft.scrollHeight);
-  //console.log('before rightHeight: ' + splitRight.scrollHeight);
+  if (!splitLeft || !splitRight) return;
 
-  const maxHeight = Math.max(splitLeft.scrollHeight, splitRight.scrollHeight);
-  const shortest = splitLeft.scrollHeight < maxHeight ? splitLeft : splitRight;
+  //console.log('sR sh: ' + splitRight.scrollHeight );
+  //console.log('sR oh: ' + splitRight.offsetHeight );
 
-  shortest.style.height = `${maxHeight}px`;
+  //splitLeft.style.height = 'auto';
+  //splitRight.style.height = 'auto';
 
-  //console.log('after leftHeight: ' + splitLeft.scrollHeight);
-  //console.log('after rightHeight: ' + splitRight.scrollHeight);
+  /**
+   * If we have scrollbars, make sure the height of that element
+   * stretches the full length of the document body
+   * This prevents white gaps in background fills on .split-left,
+   * and .split-right.
+   */
+  if ( splitRight.scrollHeight > splitRight.offsetHeight )  {
+    console.log('adding height to split-right');
+    splitRight.style.height = document.body.scrollHeight + 'px';
+  } else if ( splitLeft.scrollHeight > splitLeft.offsetHeight )  {
+    console.log('adding height to split-left');
+    splitLeft.style.height = document.body.scrollHeight + 'px';
+  }
+
 }
+
 
 export default {
 
 
   updated: function() {
-    //updateHeights();
+    updateHeights('updated');
   },
 
   mounted: function() {
 
-    //updateHeights();
+    updateHeights('mounted');
 
     this.addSelectOnFocus()
-    const splitLeft = document.querySelector('.form-container');
-    const splitRight = document.querySelector('.rendered-container'); 
+    const splitLeft = document.querySelector('.split-left');
+    const splitRight = document.querySelector('.split-right'); 
+
+    if (!splitLeft || !splitRight) return;
 
     const $window = $(window);
     const $sidebar = $('#form');
-    const $splitRight = $('.rendered-container');
+    const $splitRight = $('.split-right');
     const $navbar = $('#nav')
     const stickValue = $navbar.height();
+
+    $window.resize(updateHeights);
 
     $window.scroll(function() {
       if ( $window.scrollTop() >= stickValue ) {
         if ( splitLeft.scrollHeight < splitRight.scrollHeight) {
           $sidebar.addClass('stick');
+          
         } else {
           $splitRight.addClass('stick');
+
         }
       } else {
         $splitRight.removeClass('stick');

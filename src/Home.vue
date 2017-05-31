@@ -1,37 +1,65 @@
 <template lang="pug">
-  navbar(templateName="Choose Template")
+  div
+    navbar
+
+    div.container-fluid
+      div.row
+        div.col-md-offset-3.col-md-6.text-center(style="margin-top: 5rem;")
+          h1(style="padding-bottom: 2rem;") Make email for
+      div.row
+        div.col-md-offset-3.col-md-6.text-center
+          form.form-inline(v-on:submit="handleSubmit")
+            select.form-control.input-lg
+              option(v-for="route in app.routes" v-bind:value="route.path") {{ route.name }}
+            button(type="submit" style="padding-left: 3rem; padding-right: 3rem; margin-left: 1rem;").btn.btn-primary.btn-lg Go
+    
 
 </template>
 
 <script>
-  import rupperHeader from './components/header.vue'
   import navbar from './components/navbar.vue'
   import mixins from './mixins'
+  import { app } from './app-constants'
 
   export default {
 
     name: 'home',
 
     mounted: function() {
+      document.querySelector('body').classList.add('no-rule');
+    },
+
+    destroyed: function() {
+console.log('destroyed');
     },
 
     components: {
-      'rupper-header': rupperHeader,
       'navbar': navbar,
     },
 
     mixins: [mixins],
 
     methods: {
+
+      changeLocation: function(route) {
+        window.location.pathname = `/${route}`;
+      },
+
+      handleSubmit: function(evt) {
+        evt.preventDefault();
+        const selectedIndex = document.querySelector('.form-control').options.selectedIndex;
+        this.changeLocation(this.app.routes[selectedIndex].path.substr(1));
+      },
+
       handleChange: function(evt) {
-        window.location.pathname = `/${evt.target.value}`;
+        this.changeLocation(evt.target.value);
       }
     },
 
     data: function() {
 
       return {
-
+        app
       };
     }
   }
@@ -65,6 +93,10 @@
     transform: translateX(-50%);
     width: 1px;
     background-color: #d0d0d0;
+  }
+
+  body.no-rule:after {
+    background-color: transparent;
   }
 
   #rendered {
@@ -161,52 +193,58 @@
     justify-content: space-between;
   }
 
-  .form-container {
+  .column {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
     width: 50%;
+  }
+
+  .split-left {
+    left: 0;
     z-index: 1;
     //box-shadow: 3px 0 4px 2px rgba(0, 0, 0, 0.05);
     //background-color: #f5f5f5;
     //border-right: 1px solid #d0d0d0;
   }
 
+  .split-right {
+    right: 0;
+    width: 50%;
+    padding: 2rem;
+  }
+
+  .graph-paper {
+    font-size: 93.8%;    
+    background-color: #ffffff; 
+    background-image: 
+      -webkit-linear-gradient(0deg, transparent .05em, rgba(240,248,255,1) .05em, rgba(240,248,255,1) .125000em, transparent .125000em),
+      -webkit-linear-gradient(rgba(240,248,255,1) .062500em, transparent .062500em);
+    background-image: 
+      -moz-linear-gradient(0deg, transparent .05em, rgba(240,248,255,1) .05em, rgba(240,248,255,1) .125000em, transparent .125000em),
+      -moz-linear-gradient(rgba(240,248,255,1) .062500em, transparent .062500em);
+    background-image: 
+      -ms-linear-gradient(0deg, transparent .05em, rgba(240,248,255,1) .05em, rgba(240,248,255,1) .125000em, transparent .125000em),
+      -ms-linear-gradient(rgba(240,248,255,1) .062500em, transparent .062500em);
+    background-image: 
+      -o-linear-gradient(0deg, transparent .05em, rgba(240,248,255,1) .05em, rgba(240,248,255,1) .125000em, transparent .125000em),
+      -o-linear-gradient(rgba(240,248,255,1) .062500em, transparent .062500em);
+    background-image: 
+      linear-gradient(0deg, transparent .05em, rgba(240,248,255,1) .05em, rgba(240,248,255,1) .125000em, transparent .125000em),
+      inear-gradient(rgba(240,248,255,1) .062500em, transparent .062500em);
+    background-size: .75em .75em;  
+    background-position: 0 -0.5em; 
+
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
   .no-padding {
     padding: 0 !important;
   }
 
-  .rendered-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    
-    width: 50%;
-    padding: 2rem;
-    font-size: 93.8%;    
-    background-color: #ffffff; 
-    background-image: 
-      -webkit-linear-gradient(0deg, transparent .05em, rgba(0,0,0,.05) .05em, rgba(0,0,0,.05) .125000em, transparent .125000em),
-      -webkit-linear-gradient(rgba(0,0,0,.05) .062500em, transparent .062500em);
-    background-image: 
-      -moz-linear-gradient(0deg, transparent .05em, rgba(0,0,0,.05) .05em, rgba(0,0,0,.05) .125000em, transparent .125000em),
-      -moz-linear-gradient(rgba(0,0,0,.05) .062500em, transparent .062500em);
-    background-image: 
-      -ms-linear-gradient(0deg, transparent .05em, rgba(0,0,0,.05) .05em, rgba(0,0,0,.05) .125000em, transparent .125000em),
-      -ms-linear-gradient(rgba(0,0,0,.05) .062500em, transparent .062500em);
-    background-image: 
-      -o-linear-gradient(0deg, transparent .05em, rgba(0,0,0,.05) .05em, rgba(0,0,0,.05) .125000em, transparent .125000em),
-      -o-linear-gradient(rgba(0,0,0,.05) .062500em, transparent .062500em);
-    background-image: 
-      linear-gradient(0deg, transparent .05em, rgba(0,0,0,.05) .05em, rgba(0,0,0,.05) .125000em, transparent .125000em),
-      inear-gradient(rgba(0,0,0,.05) .062500em, transparent .062500em);
-    background-size: .75em .75em;  
-    background-position: 0 -0.5em; 
-
-
-  }
 
   .form {
     position: absolute;

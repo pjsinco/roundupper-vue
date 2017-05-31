@@ -1,21 +1,21 @@
 <template lang="pug">
-  div#workspace.clearfix.workspace
-    div.form-container
-      div#form.form
-        include ./../../views/jaoa/forms/banner
-    div.rendered-container
-      div#rendered
-        include ./../../views/jaoa/renders/banner
-    div#clone(style="position: absolute; top: -5000px; left: -5000px")
+  workspace
+    include ./../../views/jaoa/forms/banner
+    include ./../../views/jaoa/renders/banner
 </template>
 
 <script>
 
   import mixins from './../../mixins'
+  import workspace from './../workspace.vue';
 
   export default {
 
     mixins: [mixins],
+
+    components: {
+      'workspace': workspace,
+    },
 
     methods: {
       copy: function(evt) {

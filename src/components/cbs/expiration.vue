@@ -1,16 +1,8 @@
 <template lang="pug">
 
-  div#workspace.clearfix.workspace
-
-    div.form-container
-      div#form.form
-        include ./../../views/cbs/forms/expiration
-
-    div.rendered-container.no-padding
-      div#rendered
-        include ./../../views/cbs/renders/expiration
-
-    div#clone(style="position: absolute; top: -5000px; left: -5000px")
+  workspace
+    include ./../../views/cbs/forms/expiration
+    include ./../../views/cbs/renders/expiration
 
 </template>
 
@@ -19,10 +11,15 @@
   import { cbs } from './../../app-constants'
   import mixins from './../../mixins'
   import cbsExam from './exam.vue'
+  import workspace from './../workspace.vue';
 
   export default {
 
     name: 'cbs-expiration',
+  
+    components: {
+      'workspace': workspace,
+    },
 
     mixins: [mixins],
 
