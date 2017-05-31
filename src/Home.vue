@@ -1,17 +1,36 @@
 <template lang="pug">
-  navbar(templateName="Choose Template")
+  div
+    navbar
+
+    div.container-fluid
+      div.row
+        div.col-md-offset-3.col-md-6.text-center(style="margin-top: 5rem;")
+          h1(style="padding-bottom: 2rem;") Make email for
+      div.row
+        div.col-md-offset-3.col-md-6.text-center
+          form.form-inline(v-on:submit="handleSubmit")
+            select.form-control.input-lg
+              option(v-for="route in app.routes" v-bind:value="route.path") {{ route.name }}
+            button(type="submit" style="padding-left: 3rem; padding-right: 3rem; margin-left: 1rem;").btn.btn-primary.btn-lg Go
+    
 
 </template>
 
 <script>
   import navbar from './components/navbar.vue'
   import mixins from './mixins'
+  import { app } from './app-constants'
 
   export default {
 
     name: 'home',
 
     mounted: function() {
+      document.querySelector('body').classList.add('no-rule');
+    },
+
+    destroyed: function() {
+console.log('destroyed');
     },
 
     components: {
@@ -21,15 +40,26 @@
     mixins: [mixins],
 
     methods: {
+
+      changeLocation: function(route) {
+        window.location.pathname = `/${route}`;
+      },
+
+      handleSubmit: function(evt) {
+        evt.preventDefault();
+        const selectedIndex = document.querySelector('.form-control').options.selectedIndex;
+        this.changeLocation(this.app.routes[selectedIndex].path.substr(1));
+      },
+
       handleChange: function(evt) {
-        window.location.pathname = `/${evt.target.value}`;
+        this.changeLocation(evt.target.value);
       }
     },
 
     data: function() {
 
       return {
-
+        app
       };
     }
   }
@@ -63,6 +93,10 @@
     transform: translateX(-50%);
     width: 1px;
     background-color: #d0d0d0;
+  }
+
+  body.no-rule:after {
+    background-color: transparent;
   }
 
   #rendered {
@@ -203,6 +237,9 @@
 
   }
 
+  .text-center {
+    text-align: center;
+  }
 
   .no-padding {
     padding: 0 !important;

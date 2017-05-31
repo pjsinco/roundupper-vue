@@ -7,8 +7,10 @@ function updateHeights(context = '') {
   const splitLeft = document.querySelector('.split-left');
   const splitRight = document.querySelector('.split-right'); 
 
-  console.log('sR sh: ' + splitRight.scrollHeight );
-  console.log('sR oh: ' + splitRight.offsetHeight );
+  if (!splitLeft || !splitRight) return;
+
+  //console.log('sR sh: ' + splitRight.scrollHeight );
+  //console.log('sR oh: ' + splitRight.offsetHeight );
 
   //splitLeft.style.height = 'auto';
   //splitRight.style.height = 'auto';
@@ -44,6 +46,8 @@ export default {
     this.addSelectOnFocus()
     const splitLeft = document.querySelector('.split-left');
     const splitRight = document.querySelector('.split-right'); 
+
+    if (!splitLeft || !splitRight) return;
 
     const $window = $(window);
     const $sidebar = $('#form');

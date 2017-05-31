@@ -7,7 +7,7 @@
       div.navbar-center
         slot(name="select")
 
-      ul.nav.navbar-nav.navbar-right
+      ul.nav.navbar-nav.navbar-right(v-if="templateName")
         li.dropdown
           a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") {{ templateName }} #[span.caret]
           ul.dropdown-menu
