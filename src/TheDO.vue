@@ -30,7 +30,7 @@ div.blank
   export default {
 
     name: 'the-do',
-  
+
     components: {
       'navbar': navbar,
       'select-template': selectTemplate,

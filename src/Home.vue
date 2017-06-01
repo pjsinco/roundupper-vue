@@ -27,7 +27,6 @@
     name: 'home',
 
     mounted: function() {
-      document.querySelector('body').classList.add('no-rule');
     },
 
     components: {

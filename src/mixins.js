@@ -42,6 +42,10 @@ export default {
 
   mounted: function() {
 
+    console.clear();
+
+    this.handleVerticalRule();
+
     updateHeights('mounted');
 
     this.addSelectOnFocus()
@@ -78,6 +82,14 @@ export default {
   props: [ 'currentTemplate' ],
 
   methods: {
+
+    handleVerticalRule: function() {
+      if (this.$root.currentRoute === '/') {
+        document.body.classList.add('no-rule');
+      } else {
+        document.body.classList.remove('no-rule');
+      }
+    },
 
     addSelectOnFocus: function() {
       document.querySelectorAll('input[type=text]')
