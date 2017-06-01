@@ -12,14 +12,20 @@
           a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") {{ templateName }} #[span.caret]
           ul.dropdown-menu
             li(v-for="route in app.routes")
-              a(v-bind:href="route.path") {{ route.name }}
+              v-link(v-bind:href="route.path") {{ route.name }}
+              //a(v-bind:href="route.path") {{ route.name }}
 </template>
 
 <script>
 
   import { app } from './../app-constants'
+  import VLink from './v-link.vue'
 
   export default {
+
+    components: {
+      'v-link': VLink,
+    },
 
     mounted: function() {
 

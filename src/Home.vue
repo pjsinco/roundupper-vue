@@ -20,6 +20,7 @@
   import navbar from './components/navbar.vue'
   import mixins from './mixins'
   import { app } from './app-constants'
+  import routes from './routes'
 
   export default {
 
@@ -27,10 +28,6 @@
 
     mounted: function() {
       document.querySelector('body').classList.add('no-rule');
-    },
-
-    destroyed: function() {
-console.log('destroyed');
     },
 
     components: {
@@ -48,7 +45,8 @@ console.log('destroyed');
       handleSubmit: function(evt) {
         evt.preventDefault();
         const selectedIndex = document.querySelector('.form-control').options.selectedIndex;
-        this.changeLocation(this.app.routes[selectedIndex].path.substr(1));
+        const route = this.app.routes[selectedIndex];
+        this.navigate(route.path);
       },
 
       handleChange: function(evt) {

@@ -1,33 +1,37 @@
 import Vue from 'vue'
-import Jaoa from './Jaoa.vue'
-import Cbs from './Cbs.vue'
-import Home from './Home.vue'
-import TheDO from './TheDO.vue'
+import routes from './routes'
 
-const routes = {
-  '/': Home,
-  '/jaoa': Jaoa,
-  '/cbs': Cbs,
-  '/the-do': TheDO,
-};
-
-new Vue({
+const app = new Vue({
 
   el: '#app',
-  
+
+  mounted: function() {
+    this.currentRoute = window.location.pathname;
+  },
+
+  updated: function() {
+    this.currentRoute = window.location.pathname;
+  },
+
+  methods: {
+
+  },
+
   data: {
     currentRoute: window.location.pathname
   },
 
-  mounted: function() {
-    console.log(routes[this.currentRoute]);
-  },
-
   computed: {
-    ViewComponent() {
+    ViewComponent () {
       return routes[this.currentRoute]
     }
   },
 
-  render(h) { return h(this.ViewComponent) }
+  render (h) {
+    return h(this.ViewComponent)
+  }
+})
+
+window.addEventListener('popstate', () => {
+  app.currentRoute = window.location.pathname
 })
