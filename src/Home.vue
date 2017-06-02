@@ -67,8 +67,9 @@
 <style lang="scss">
 
   $first-color: #1ccacd;
-  $second-color: #e40066;
-  $third-color: #118AB2;
+  //$second-color: #e40066;
+  $second-color: #ff3366;
+  $third-color: #8a1c7c;
   $font-color-light: #888;
 
   @import './assets/sass/variables';
