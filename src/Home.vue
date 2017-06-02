@@ -158,7 +158,7 @@
   }
   
   .image-group {
-    background: aliceblue;
+    background: rgba($first-color, 0.09);
     margin-bottom: 1.25rem;
     margin-top: 1.75rem;
     padding: 1.25rem;
@@ -334,6 +334,19 @@
     border-color: darken($second-color, 4%);  
   }
 
+  .btn-danger:hover,
+  .btn-danger:active {
+    background-color: darken($second-color, 4%);
+    border-color: darken($second-color, 4%);
+  }
+
+  .btn-danger,
+  .btn-danger.focus, 
+  .btn-danger:focus, {
+    background-color: $second-color;
+    border-color: $second-color;
+  }
+
   .navbar {
     border-radius: 0px;
     margin-bottom: 0;
@@ -377,6 +390,11 @@
   .btn-group>.btn:focus, 
   .btn-group>.btn:hover {
     z-index: auto;
+  }
+
+  .form-control:focus {
+    border-color: $first-color;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($first-color, .6);
   }
 
 </style>
