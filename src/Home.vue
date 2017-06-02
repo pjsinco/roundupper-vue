@@ -5,7 +5,7 @@
     div.container-fluid
       div.row
         div.col-md-offset-3.col-md-6.text-center(style="margin-top: 5rem;")
-          h1(style="padding-bottom: 2rem;") Make email for
+          h1(style="padding-bottom: 2rem; color: #888;") Make email for
       div.row
         div.col-md-offset-3.col-md-6.text-center
           form.form-inline(v-on:submit="handleSubmit")
@@ -65,6 +65,11 @@
 
 
 <style lang="scss">
+
+  $first-color: #1ccacd;
+  $second-color: #e40066;
+  $third-color: #118AB2;
+  $font-color-light: #888;
 
   @import './assets/sass/variables';
   @import './../node_modules/animate.css/animate.min.css';
@@ -301,19 +306,66 @@
 
   .btn-primary.focus,
   .btn-primary:focus {
-    background-color: #337ab7;
-    border-color: #204d74;
+    background-color: $second-color;
+    border-color: $second-color;
   }
 
-  .btn-info.focus,
+  .btn-info,
   .btn-info:focus {
-    background-color: #31b0d5;
-    border-color: #269abc;
+    background-color: $first-color;
+    border-color: $first-color;
+  }
+
+  .btn-info:hover,
+  .btn-info:active,
+  .btn-info:hover {
+    background-color: darken($first-color, 4%);
+    border-color: darken($first-color, 4%);  
   }
   
+  .btn-primary {
+    background-color: $second-color;
+    border-color: $second-color;  
+  }
+
+  .btn-primary:hover,
+  .btn-primary:active {
+    background-color: darken($second-color, 4%);
+    border-color: darken($second-color, 4%);  
+  }
+
   .navbar {
     border-radius: 0px;
     margin-bottom: 0;
+  }
+  
+  .navbar-inverse {
+    background-color: #1ccacd;
+    border-color: #1ccacd;
+  }
+
+  .navbar label,
+  .navbar-inverse .navbar-nav>li>a,
+  .navbar-inverse .navbar-brand {
+    color: white;
+  }
+
+ .navbar-inverse .navbar-nav>.open>a, 
+ .navbar-inverse .navbar-nav>.open>a:focus, 
+ .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: darken($first-color, 4%);
+    border-color: darken($first-color, 4%);
+  }
+
+  .dropdown-menu>li>a {
+    color: $second-color;
+  }
+
+
+  .dropdown-menu>li>a:focus, 
+  .dropdown-menu>li>a:hover {
+    background-color: rgba($first-color, .14);
+    color: $second-color;
   }
 
 </style>

@@ -129,7 +129,7 @@ export default {
       const htmlVersion = document.getElementById('rendered')
     },
 
-    popUpToast: function(title, message, color = '#2dccb8') {
+    popUpToast: function(title, message, color = '#e40066') {
       const toast = document.getElementById('toastContainer')
       document.getElementsByClassName('toast')[0].style.backgroundColor = color
       toast.querySelector('.toast-title').innerText = title
@@ -178,7 +178,7 @@ export default {
     clipboardSuccess: function(el, 
                                title = 'Copied!', 
                                message = 'Ready to paste', 
-                               color = '#2dccb8') {
+                               color = '#e40066') {
 
       const rendered = document.getElementById('rendered')
       rendered.classList.add('animated', 'jello');
