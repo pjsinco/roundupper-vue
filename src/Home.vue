@@ -358,7 +358,7 @@
   }
 
   .dropdown-menu>li>a {
-    color: $second-color;
+    color: #555;
   }
 
 
@@ -366,6 +366,17 @@
   .dropdown-menu>li>a:hover {
     background-color: rgba($first-color, .14);
     color: $second-color;
+  }
+
+  .btn-group-vertical>.btn.active, 
+  .btn-group-vertical>.btn:active, 
+  .btn-group-vertical>.btn:focus, 
+  .btn-group-vertical>.btn:hover, 
+  .btn-group>.btn.active, 
+  .btn-group>.btn:active, 
+  .btn-group>.btn:focus, 
+  .btn-group>.btn:hover {
+    z-index: auto;
   }
 
 </style>
