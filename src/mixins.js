@@ -129,7 +129,7 @@ export default {
       const htmlVersion = document.getElementById('rendered')
     },
 
-    popUpToast: function(title, message, color = '#ff3366') {
+    popUpToast: function(title, message, color = '#1ccacd') {
       const toast = document.getElementById('toastContainer')
       document.getElementsByClassName('toast')[0].style.backgroundColor = color
       toast.querySelector('.toast-title').innerText = title
@@ -168,8 +168,8 @@ export default {
         this.clipboardSuccess(
           document.getElementById('copyHtml'),
           'HTML code copied',
-          'The HTML code is copied to your clipboard. Ready to paste!'
-          //'#337ab7'
+          'The HTML code is copied to your clipboard. Ready to paste!',
+          '#ff3366'
         );
         clipboard.destroy();
       }.bind(this));
@@ -178,7 +178,7 @@ export default {
     clipboardSuccess: function(el, 
                                title = 'Copied!', 
                                message = 'Ready to paste', 
-                               color = '#ff3366') {
+                               color = '#1ccacd') {
 
       const rendered = document.getElementById('rendered')
       rendered.classList.add('animated', 'jello');
@@ -206,8 +206,8 @@ export default {
       clipboard.on('success', function(evt) {
         this.clipboardSuccess(document.getElementById('copyTextVersion'), 
                               'Text version copied',
-                              'The text version is copied to your clipboard. Ready to paste!'
-                              //'#31b0d5'
+                              'The text version is copied to your clipboard. Ready to paste!',
+                              '#1ccacd'
         );
         clipboard.destroy();
       }.bind(this))
