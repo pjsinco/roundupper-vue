@@ -50,7 +50,6 @@ div.blank
 
     methods: {
       handleTemplateSelect: function(template) {
-console.log(template);
         this.currentTemplate = template;
       },
 
@@ -65,4 +64,5 @@ console.log(template);
 </script>
 
 <style>
+
 </style>
