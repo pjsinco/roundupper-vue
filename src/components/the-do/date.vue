@@ -19,6 +19,12 @@
       'workspace': workspace,
     },
 
+    filters: {
+      apStyle(date) {
+
+      }
+    },
+
     methods: {
 
       copy: function() {
@@ -36,10 +42,13 @@
       },
     },
 
-    data: function() {
-      return {
-        date: moment().format('MMMM D, YYYY'),
-      };
+    computed: {
+      date: function() {
+        const today = moment()
+        const apMonths = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June',
+          'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
+        return `${apMonths[today.month()]} ${today.format('D, YYYY')}`;
+      }
     },
 
   }
