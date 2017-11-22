@@ -77,7 +77,7 @@ module.exports = {
         "abbrev": "AOCSMEC",
         "friendly": "Sports Medicine",
         "email": "sportsmedicine@osteopathic.org",
-        "phone": "(800) 621-1773, ext. 8241",
+        "phone": "(800) 621-1773, ext. 8082",
         "address": "142 E. Ontario St., Chicago, IL 60611-2864",
         "boardUrl": "http://www.aoesm.org/",
         "logoSrc": "http://aoa-mnews.informz.net/aoa-mnews/data/images/cbs/logo-aocsmec.png",
