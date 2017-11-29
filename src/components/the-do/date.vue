@@ -42,14 +42,18 @@
       },
     },
 
-    computed: {
-      date: function() {
-        const today = moment()
-        const apMonths = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June',
-          'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
-        return `${apMonths[today.month()]} ${today.format('D, YYYY')}`;
-      }
+    created: function() {
+      const today = moment()
+      const apMonths = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June',
+        'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
+      this.date = `${apMonths[today.month()]} ${today.format('D, YYYY')}`;
     },
+
+    data: function() {
+      return {
+        date: null,
+      }
+    }
 
   }
 
