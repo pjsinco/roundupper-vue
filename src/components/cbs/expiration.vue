@@ -16,7 +16,7 @@
   export default {
 
     name: 'cbs-expiration',
-  
+
     components: {
       'workspace': workspace,
     },
