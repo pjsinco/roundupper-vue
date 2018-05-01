@@ -23,6 +23,7 @@ const app = new Vue({
 
   computed: {
     ViewComponent () {
+console.log(routes[this.currentRoute]);
       return routes[this.currentRoute]
     }
   },
