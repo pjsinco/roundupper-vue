@@ -6,10 +6,12 @@ const app = new Vue({
   el: '#app',
 
   mounted: function() {
+console.log('mounted');
     this.currentRoute = window.location.pathname;
   },
 
   updated: function() {
+console.log('updated');
     this.currentRoute = window.location.pathname;
   },
 
