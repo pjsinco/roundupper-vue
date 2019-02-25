@@ -30,7 +30,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.pug/,
+        test: /\.pug$/,
         loader: 'pug-loader',
         exclude: /node_modules/
       },

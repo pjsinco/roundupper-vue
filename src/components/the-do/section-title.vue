@@ -43,6 +43,7 @@
     data: function() {
       return {
         sectionTitle: 'More stories',
+        buttonText: 'Read now',
       };
     },
   }

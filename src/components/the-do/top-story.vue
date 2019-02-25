@@ -47,8 +47,9 @@
         headline: 'Lorem headline',
         excerpt: 'Lorem excerpt',
         link: '',
-        imageUrl: 'http://placehold.it/480x320',
+        imageUrl: 'http://picsum.photos/480/320',
         hasRules: false,
+        buttonText: 'Read now',
       };
     },
   }

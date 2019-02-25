@@ -49,10 +49,11 @@
         headline: 'Lorem headline',
         excerpt: 'Lorem excerpt',
         link: '',
-        imageUrl: 'http://placehold.it/320x213',
+        imageUrl: 'http://picsum.photos/320/213',
         ruleBelow: true,
         ruleAbove: false,
         hasRules: true,
+        buttonText: 'Read now'
       };
     },
 

@@ -9,6 +9,7 @@ div.blank
       optgroup(label="Other parts")
         option(value="the-do-quote") Quote
         option(value="the-do-section-title") Section Title
+        option(value="the-do-note") Note
         option(value="the-do-date" selected) Date
   transition(name="fade" appear mode="out-in")
     component(v-bind:is="currentTemplate" v-bind:current-template="currentTemplate")
@@ -26,6 +27,7 @@ div.blank
   import quote from './components/the-do/quote.vue'
   import sectionTitle from './components/the-do/section-title.vue'
   import date from './components/the-do/date.vue'
+  import note from './components/the-do/note.vue'
 
   export default {
 
@@ -40,6 +42,7 @@ div.blank
       'the-do-quote': quote,
       'the-do-section-title': sectionTitle,
       'the-do-date': date,
+      'the-do-note': note,
     },
 
     data: function() {
@@ -63,6 +66,3 @@ div.blank
 
 </script>
 
-<style>
-
-</style>
