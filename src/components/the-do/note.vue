@@ -39,7 +39,7 @@ export default{
       callout: 'Continue receiving The DO newsletter for free',
       buttonText: 'Subscribe',
       link: 'https://thedo.osteopathic.org/subscribe',
-      foo: 'bac',
+      foo: 'bao',
     }
   },
 };

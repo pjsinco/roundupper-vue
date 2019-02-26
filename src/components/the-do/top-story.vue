@@ -49,7 +49,7 @@
         link: '',
         imageUrl: 'http://picsum.photos/480/320',
         hasRules: false,
-        buttonText: 'Read now',
+        buttonText: 'Read now'
       };
     },
   }
