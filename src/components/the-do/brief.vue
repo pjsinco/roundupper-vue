@@ -54,7 +54,7 @@
         ruleBelow: true,
         ruleAbove: false,
         hasRules: true,
-        buttonText: 'Read now',
+        buttonText: 'Read now'
       };
     },
 
