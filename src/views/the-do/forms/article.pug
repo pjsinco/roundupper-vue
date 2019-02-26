@@ -11,11 +11,11 @@ div(slot="form")
     label(for="excerpt") Excerpt
     input(type="text" id="excerpt" v-model="excerpt").form-control
 
-  div(v-if="this.$options.name != 'the-do-brief'").form-group
+  div.form-group
     label(for="link") Story link
     input(type="text" id="link" v-model="link").form-control
 
-  div.form-group
+  div(v-if="this.$options.name != 'the-do-brief'").form-group
     label(for="buttonText") Button Text
     input(type="text" id="buttonText" v-model="buttonText").form-control
 
