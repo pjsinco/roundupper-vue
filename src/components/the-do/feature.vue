@@ -7,55 +7,50 @@
 </template>
 
 <script>
+import workspace from './../workspace.vue';
+import mixins from './../../mixins';
 
-  import workspace from './../workspace.vue';
-  import mixins from './../../mixins';
+export default {
+  name: 'the-do-feature',
 
-  export default {
-    
-    name: 'the-do-feature',
+  components: {
+    workspace: workspace,
+  },
 
-    components: {
-      'workspace': workspace,
+  mixins: [mixins],
+
+  methods: {
+    copy: function() {
+      this.copyHtml();
     },
 
-    mixins: [mixins],
+    copyTextVersion: function() {
+      const text = [
+        this.kicker,
+        this.headline.toUpperCase(),
+        '------------------------------------' +
+          '------------------------------------',
+        this.excerpt,
+        this.link,
+        '',
+      ].join('\n');
 
-    methods: {
-      copy: function() {
-        this.copyHtml();
-      },
-
-      copyTextVersion: function() {
-
-        const text = [
-          this.kicker,
-          this.headline.toUpperCase(),
-          '------------------------------------' +
-              '------------------------------------',
-          this.excerpt,
-          this.link,
-          '',
-        ].join('\n');
-
-        return this.copyText(text);
-      },
+      return this.copyText(text);
     },
+  },
 
-    data: function() {
-
-      return {
-        kicker: 'lorem kicker',
-        headline: 'Lorem headline',
-        excerpt: 'Lorem excerpt',
-        link: '',
-        imageUrl: 'http://picsum.photos/320/213',
-        ruleBelow: true,
-        ruleAbove: false,
-        hasRules: true,
-        buttonText: 'Read now'
-      };
-    },
-
-  }
+  data: function() {
+    return {
+      kicker: 'lorem kicker',
+      headline: 'Lorem headline',
+      excerpt: 'Lorem excerpt',
+      link: '',
+      imageUrl: 'http://picsum.photos/320/213',
+      ruleBelow: true,
+      ruleAbove: false,
+      hasRules: true,
+      buttonText: 'Read now',
+    };
+  },
+};
 </script>

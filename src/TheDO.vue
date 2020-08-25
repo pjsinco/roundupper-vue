@@ -10,7 +10,7 @@ div.blank
         option(value="the-do-quote") Quote
         option(value="the-do-section-title") Section Title
         option(value="the-do-note") Note
-        option(value="the-do-sponsored-content" selected) Sponsored Content
+        option(value="the-do-sponsored-content") Sponsored Content
         option(value="the-do-date" selected) Date
   transition(name="fade" appear mode="out-in")
     component(v-bind:is="currentTemplate" v-bind:current-template="currentTemplate")
@@ -48,7 +48,7 @@ export default {
 
   data: function() {
     return {
-      currentTemplate: 'the-do-sponsored-content',
+      currentTemplate: 'the-do-date',
     };
   },
 
