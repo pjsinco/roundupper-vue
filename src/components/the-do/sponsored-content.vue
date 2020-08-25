@@ -1,8 +1,8 @@
 <template lang="pug">
 
   workspace
-    include ./../../views/the-do/forms/article
-    include ./../../views/the-do/renders/feature
+    include ./../../views/the-do/forms/sponsored-content
+    include ./../../views/the-do/renders/sponsored-content
 
 </template>
 
@@ -11,13 +11,13 @@ import workspace from './../workspace.vue';
 import mixins from './../../mixins';
 
 export default {
-  name: 'the-do-feature',
-
-  components: {
-    workspace: workspace,
-  },
+  name: 'the-do-sponsored-content',
 
   mixins: [mixins],
+
+  components: {
+    workspace,
+  },
 
   methods: {
     copy: function() {
@@ -26,7 +26,6 @@ export default {
 
     copyTextVersion: function() {
       const text = [
-        this.kicker,
         this.headline.toUpperCase(),
         '------------------------------------' +
           '------------------------------------',
@@ -39,9 +38,8 @@ export default {
     },
   },
 
-  data: function() {
+  data() {
     return {
-      kicker: 'lorem kicker',
       headline: 'Lorem headline',
       excerpt: 'Lorem excerpt',
       link: '',
@@ -49,8 +47,9 @@ export default {
       ruleBelow: true,
       ruleAbove: false,
       hasRules: true,
-      buttonText: 'Read now',
     };
   },
 };
 </script>
+
+<style scoped></style>
