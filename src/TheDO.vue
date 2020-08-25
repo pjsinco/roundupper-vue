@@ -10,6 +10,7 @@ div.blank
         option(value="the-do-quote") Quote
         option(value="the-do-section-title") Section Title
         option(value="the-do-note") Note
+        option(value="the-do-sponsored-content") Sponsored Content
         option(value="the-do-date" selected) Date
   transition(name="fade" appear mode="out-in")
     component(v-bind:is="currentTemplate" v-bind:current-template="currentTemplate")
@@ -18,51 +19,47 @@ div.blank
 </template>
 
 <script>
+import navbar from './components/navbar.vue';
+import selectTemplate from './components/select-template.vue';
+import topStory from './components/the-do/top-story.vue';
+import brief from './components/the-do/brief.vue';
+import feature from './components/the-do/feature.vue';
+import quote from './components/the-do/quote.vue';
+import sectionTitle from './components/the-do/section-title.vue';
+import date from './components/the-do/date.vue';
+import note from './components/the-do/note.vue';
+import sponsoredContent from './components/the-do/sponsored-content.vue';
 
-  import navbar from './components/navbar.vue'
-  import selectTemplate from './components/select-template.vue'
-  import topStory from './components/the-do/top-story.vue'
-  import brief from './components/the-do/brief.vue'
-  import feature from './components/the-do/feature.vue'
-  import quote from './components/the-do/quote.vue'
-  import sectionTitle from './components/the-do/section-title.vue'
-  import date from './components/the-do/date.vue'
-  import note from './components/the-do/note.vue'
+export default {
+  name: 'the-do',
 
-  export default {
+  components: {
+    navbar: navbar,
+    'select-template': selectTemplate,
+    'the-do-top-story': topStory,
+    'the-do-brief': brief,
+    'the-do-feature': feature,
+    'the-do-quote': quote,
+    'the-do-section-title': sectionTitle,
+    'the-do-date': date,
+    'the-do-note': note,
+    'the-do-sponsored-content': sponsoredContent,
+  },
 
-    name: 'the-do',
+  data: function() {
+    return {
+      currentTemplate: 'the-do-date',
+    };
+  },
 
-    components: {
-      'navbar': navbar,
-      'select-template': selectTemplate,
-      'the-do-top-story': topStory,
-      'the-do-brief': brief,
-      'the-do-feature': feature,
-      'the-do-quote': quote,
-      'the-do-section-title': sectionTitle,
-      'the-do-date': date,
-      'the-do-note': note,
+  methods: {
+    handleTemplateSelect: function(template) {
+      this.currentTemplate = template;
     },
 
-    data: function() {
-      return {
-        currentTemplate: 'the-do-date',
-      }
+    toastClose: function() {
+      document.getElementById('toastContainer').classList.remove('active');
     },
-
-    methods: {
-      handleTemplateSelect: function(template) {
-        this.currentTemplate = template;
-      },
-
-      toastClose: function() {
-        document.getElementById('toastContainer').classList.remove('active')
-      },
-
-    }
-
-  }
-
+  },
+};
 </script>
-
